@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Liquid</string>
+    <string name="amount_to_make">Amount to make</string>
+    <string name="desired_strength">Desired strength</string>
+    <string name="water_vodka_pga">Water/Vodka/PGA</string>
+    <string name="desired_pg">Desired PG</string>
+    <string name="desired_vg">Desired VG</string>
+    <string name="nicotine_strength">Nicotine strength</string>
+    <string name="pg_content_of_nicotine">PG-content of nicotine</string>
+    <string name="vg_content_of_nicotine">VG-content of nicotine</string>
+    <string name="add_flavor">Add flavor</string>
+    <string name="flavor_1">Flavor 1</string>
+    <string name="flavor_2">Flavor 2</string>
+    <string name="flavor_3">Flavor 3</string>
+    <string name="create">Create</string>
+</resources>
