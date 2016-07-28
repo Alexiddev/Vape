@@ -2,6 +2,7 @@ package vape.val.liquid;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -10,7 +11,8 @@ import android.widget.TextView;
 import com.rey.material.widget.Slider;
 
 public class MainActivity extends AppCompatActivity {
-
+//http://e-liquid-recipes.com/create
+    //http://www.danstools.com/javascript-beautify/
     private int count_flavor = 0;
     private float value_amount_to_make;
     private float value_desired_strength;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     Button addFlavour;
+    Button create;
     LinearLayout flavorLayout_1;
     com.rey.material.widget.Slider flavor_slider_1;
     LinearLayout flavorLayout_2;
@@ -68,12 +71,22 @@ public class MainActivity extends AppCompatActivity {
         init();
         flavorOnClick();
 
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                create();
+            }
+        });
+
 
 
 
     }
 
     private void init(){
+
+        create = (Button) findViewById(R.id.create);
+
 
 
         amount_to_make = (TextView) findViewById(R.id.amount_to_make_int);
@@ -170,6 +183,21 @@ public class MainActivity extends AppCompatActivity {
     public void create(){
         value_amount_to_make = getFloatfromField(amount_to_make);
         value_desired_strength = getFloatfromField(desired_strength);
+        value_water_vodka_pga = water_vodka_pga_slider.getValue();
+        value_desired_pg = desired_pg_slider.getValue();
+        value_desired_vg = desired_vg_slider.getValue();
+        value_nicotine_sterngth = getFloatfromField(nicotine_strength);
+        value_pg_content_of_nicotine = pg_content_of_nicotine_slider.getValue();
+        value_vg_content_of_nicotine = vg_content_of_nicotine_slider.getValue();
+        value_falvour_1 = flavor_slider_1.getValue();
+        value_falvour_2 = flavor_slider_2.getValue();
+        value_falvour_3 = flavor_slider_3.getValue();
+
+
+        Log.i("Main ", "all_value " + value_amount_to_make + " " + value_desired_strength+ " " +value_water_vodka_pga + " " + value_desired_pg);
+        Log.i("Main ", "all_value " + value_desired_vg + " " + value_nicotine_sterngth+ " " +value_pg_content_of_nicotine + " " + value_vg_content_of_nicotine);
+        Log.i("Main ", "all_value " + value_falvour_1 + " " + value_falvour_2+ " " +value_falvour_3);
+
     }
 
     private float getFloatfromField(TextView textView){
