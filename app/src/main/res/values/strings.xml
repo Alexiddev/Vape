@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Liquid</string>
+    <string name="app_name">E-Cigarette liquid recipe</string>
     <string name="amount_to_make">Amount to make</string>
     <string name="desired_strength">Desired strength</string>
     <string name="water_vodka_pga">Water/Vodka/PGA</string>
@@ -13,4 +13,13 @@
     <string name="flavor_2">Flavor 2</string>
     <string name="flavor_3">Flavor 3</string>
     <string name="create">Create</string>
+    <string name="ml">ml</string>
+    <string name="grams">Grams</string>
+    <string name="nicotine_juice">Nicotine juice</string>
+    <string name="pg_dilutant">Propylene Glycol</string>
+    <string name="vg_dilutant">Vegetable Glycerin</string>
+    <string name="water_vodka_pga_str">Water/Vodka/PGA</string>
+
+    <string name="banner_home_footer">ca-app-pub-7116840615884768/1319196132</string>
+    <string name="banner_result">ca-app-pub-7116840615884768/1319196132</string>
 </resources>

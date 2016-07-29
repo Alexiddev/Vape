@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,12 +12,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="vape.val.liquid.MainActivity"
-    android:background="@drawable/smoke_cloud">
+    android:background="@drawable/smoke_cloud"
+    android:weightSum="1">
 
     <ScrollView
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-       >
+        android:layout_height="80dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,7 +94,20 @@
         </LinearLayout>
 
 
+            <com.rey.material.widget.Slider
+                android:id="@+id/slider_water_vodka_pga"
+                style="@style/Material.Widget.Slider.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:sl_primaryColor="@color/colorPrimary"
+                app:sl_minValue="0"
+                app:sl_maxValue="100"
+                app:sl_value="0"
+                android:layout_gravity="center_horizontal" />
+
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:orientation="horizontal">
@@ -121,17 +138,17 @@
 
         </LinearLayout>
 
-        <com.rey.material.widget.Slider
-            android:id="@+id/slider_water_vodka_pga"
-            style="@style/Material.Widget.Slider.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:sl_primaryColor="@color/colorPrimary"
-            app:sl_minValue="0"
-            app:sl_maxValue="100"
-            app:sl_value="0"
-            android:layout_gravity="center_horizontal" />
+            <com.rey.material.widget.Slider
+                style="@style/Material.Widget.Slider.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/desired_pg_slider"
+                app:sl_primaryColor="@color/colorPrimary"
+                android:gravity="center"
+                app:sl_minValue="0"
+                app:sl_maxValue="100"
+                app:sl_value="50"
+                android:layout_gravity="center_horizontal" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -164,17 +181,19 @@
 
         </LinearLayout>
 
-        <com.rey.material.widget.Slider
-            style="@style/Material.Widget.Slider.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/desired_pg_slider"
-            app:sl_primaryColor="@color/colorPrimary"
-            android:gravity="center"
-            app:sl_minValue="0"
-            app:sl_maxValue="100"
-            app:sl_value="50"
-            android:layout_gravity="center_horizontal" />
+
+
+            <com.rey.material.widget.Slider
+                style="@style/Material.Widget.Slider.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/desired_vg_slider"
+                app:sl_primaryColor="@color/colorPrimary"
+                android:gravity="center"
+                app:sl_minValue="0"
+                app:sl_maxValue="100"
+                app:sl_value="50"
+                android:layout_gravity="center_horizontal" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -207,17 +226,7 @@
 
         </LinearLayout>
 
-        <com.rey.material.widget.Slider
-            style="@style/Material.Widget.Slider.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/desired_vg_slider"
-            app:sl_primaryColor="@color/colorPrimary"
-            android:gravity="center"
-            app:sl_minValue="0"
-            app:sl_maxValue="100"
-            app:sl_value="50"
-            android:layout_gravity="center_horizontal" />
+
 
 
             <LinearLayout
@@ -250,6 +259,17 @@
             </LinearLayout>
 
 
+            <com.rey.material.widget.Slider
+                android:id="@+id/pg_content_of_nicotine_slider"
+                style="@style/Material.Widget.Slider.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:sl_primaryColor="@color/colorPrimary"
+                android:gravity="center"
+                app:sl_minValue="0"
+                app:sl_maxValue="100"
+                app:sl_value="100"
+                android:layout_gravity="center_horizontal" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -281,18 +301,19 @@
 
             </LinearLayout>
 
+
             <com.rey.material.widget.Slider
-                android:id="@+id/pg_content_of_nicotine_slider"
                 style="@style/Material.Widget.Slider.Discrete"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/vg_content_of_nicotine_int"
                 app:sl_primaryColor="@color/colorPrimary"
                 android:gravity="center"
                 app:sl_minValue="0"
                 app:sl_maxValue="100"
-                app:sl_value="100"
+                app:sl_value="0"
                 android:layout_gravity="center_horizontal" />
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -324,19 +345,19 @@
 
             </LinearLayout>
 
-            <com.rey.material.widget.Slider
-                style="@style/Material.Widget.Slider.Discrete"
 
+            <com.rey.material.widget.Slider
+                android:visibility="gone"
+                style="@style/Material.Widget.Slider.Discrete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/vg_content_of_nicotine_int"
+                android:id="@+id/slider_add_flavor_1"
                 app:sl_primaryColor="@color/colorPrimary"
                 android:gravity="center"
                 app:sl_minValue="0"
                 app:sl_maxValue="100"
                 app:sl_value="0"
                 android:layout_gravity="center_horizontal" />
-
             <LinearLayout
                 android:id="@+id/add_flavor_layout_1"
                 android:layout_width="match_parent"
@@ -376,7 +397,7 @@
                 style="@style/Material.Widget.Slider.Discrete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/slider_add_flavor_1"
+                android:id="@+id/slider_add_flavor_2"
                 app:sl_primaryColor="@color/colorPrimary"
                 android:gravity="center"
                 app:sl_minValue="0"
@@ -422,13 +443,14 @@
                 style="@style/Material.Widget.Slider.Discrete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/slider_add_flavor_2"
+                android:id="@+id/slider_add_flavor_3"
                 app:sl_primaryColor="@color/colorPrimary"
                 android:gravity="center"
                 app:sl_minValue="0"
                 app:sl_maxValue="100"
                 app:sl_value="0"
                 android:layout_gravity="center_horizontal" />
+
 
             <LinearLayout
                 android:id="@+id/add_flavor_layout_3"
@@ -463,18 +485,6 @@
 
             </LinearLayout>
 
-            <com.rey.material.widget.Slider
-                android:visibility="gone"
-                style="@style/Material.Widget.Slider.Discrete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/slider_add_flavor_3"
-                app:sl_primaryColor="@color/colorPrimary"
-                android:gravity="center"
-                app:sl_minValue="0"
-                app:sl_maxValue="100"
-                app:sl_value="0"
-                android:layout_gravity="center_horizontal" />
 
 
 
@@ -509,10 +519,18 @@
         </LinearLayout>
 
 
+
+
     </ScrollView>
 
 
-
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_home_footer">
+    </com.google.android.gms.ads.AdView>
 
 
 
