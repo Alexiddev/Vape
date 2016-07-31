@@ -3,7 +3,6 @@ package vape.val.liquid;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,39 +16,39 @@ public class ResultActivity extends AppCompatActivity {
 
     private AdView mAdView;
 
-    TextView nicotine_juice_ml;
-    TextView nicotine_juice_gramm;
-    TextView nicotine_juice_per;
+    TextView nicotineJuiceMl;
+    TextView nicotineJuiceGrams;
+    TextView nicotineJuicePercent;
 
-    TextView pg_dilutant_ml;
-    TextView pg_dilutant_gramm;
-    TextView pg_dilutant_per;
+    TextView pgMl;
+    TextView pgGrams;
+    TextView pgPercent;
 
-    TextView vg_dilutant_ml;
-    TextView vg_dilutant_gramm;
-    TextView vg_dilutant_per;
+    TextView vgMl;
+    TextView vgGrams;
+    TextView vgPercent;
 
-    TextView wvg_ml;
-    TextView wvg_gramm;
-    TextView wvg_per;
+    TextView waterMl;
+    TextView waterGrams;
+    TextView waterPercent;
 
-    TextView flavor_1_ml;
-    TextView flavor_1_gramm;
-    TextView flavor_1_per;
+    TextView flavorMl_1;
+    TextView flavorGrams_1;
+    TextView flavorPercent_1;
 
-    TextView flavor_2_ml;
-    TextView flavor_2_gramm;
-    TextView flavor_2_per;
+    TextView flavorMl_2;
+    TextView flavorGrams_2;
+    TextView flavorPercent_2;
 
-    TextView flavor_3_ml;
-    TextView flavor_3_gramm;
-    TextView flavor_3_per;
+    TextView flavorMl_3;
+    TextView flavorGrams_3;
+    TextView flavorPercent_3;
 
-    LinearLayout lavour_1;
-    LinearLayout lavour_2;
-    LinearLayout lavour_3;
+    LinearLayout flavorLayout_1;
+    LinearLayout flavorLayout_2;
+    LinearLayout flavorLayout_3;
 
-    HashMap<String, Float> hashMap;
+    HashMap<String, Float> recept;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,7 @@ public class ResultActivity extends AppCompatActivity {
         mAdView.loadAd(adRequest);
 
         Intent intent = getIntent();
-        hashMap = (HashMap<String, Float>)intent.getSerializableExtra("resultMap");
+        recept = (HashMap<String, Float>) intent.getSerializableExtra("resultMap");
 
         init();
         setValue();
@@ -70,76 +69,73 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void setValue() {
-        setValueFromMap(nicotine_juice_ml, "nicotine_juice");
-        setValueFromMap(nicotine_juice_gramm, "nicgrams");
-        setValueFromMap(nicotine_juice_per, "nicper");
+        setValueFromMap(nicotineJuiceMl, "nicotineJuiceMl");
+        setValueFromMap(nicotineJuiceGrams, "nicotineGrams");
+        setValueFromMap(nicotineJuicePercent, "nicotinePercent");
 
-        setValueFromMap(pg_dilutant_ml, "xpgml");
-        setValueFromMap(pg_dilutant_gramm, "xpggrams");
-        setValueFromMap(pg_dilutant_per, "xpgper");
+        setValueFromMap(pgMl, "pgMl");
+        setValueFromMap(pgGrams, "pgGrams");
+        setValueFromMap(pgPercent, "pgPercent");
 
-        setValueFromMap(vg_dilutant_ml, "xvgml");
-        setValueFromMap(vg_dilutant_gramm, "xvggrams");
-        setValueFromMap(vg_dilutant_per, "xvgper");
+        setValueFromMap(vgMl, "vgMl");
+        setValueFromMap(vgGrams, "vgGrams");
+        setValueFromMap(vgPercent, "vgPercent");
 
+        setValueFromMap(waterMl, "waterDrops");
+        setValueFromMap(waterGrams, "waterGrams");
+        setValueFromMap(waterPercent, "waterPercent");
 
-        setValueFromMap(wvg_ml, "wvdrops");
-        setValueFromMap(wvg_gramm, "wvgrams");
-        setValueFromMap(wvg_per, "wvper");
+        if (!recept.get("flavorMl_1").toString().equals("0.0"))
+            flavorLayout_1.setVisibility(View.VISIBLE);
+        setValueFromMap(flavorMl_1, "flavorMl_1");
+        setValueFromMap(flavorGrams_1, "flavorDrop_1");
+        setValueFromMap(flavorPercent_1, "flavorPercent_1");
 
+        if (!recept.get("flavorMl_2").toString().equals("0.0"))
+            flavorLayout_2.setVisibility(View.VISIBLE);
+        setValueFromMap(flavorMl_2, "flavorMl_2");
+        setValueFromMap(flavorGrams_2, "flavorDrop_2");
+        setValueFromMap(flavorPercent_2, "flavorPercent_2");
 
-        if (!hashMap.get("flml_1").toString().equals("0.0")) lavour_1.setVisibility(View.VISIBLE);
-        setValueFromMap(flavor_1_ml, "flml_1");
-        setValueFromMap(flavor_1_gramm, "fldr_1");
-        setValueFromMap(flavor_1_per, "flper_1");
-
-
-        if (!hashMap.get("flml_2").toString().equals("0.0")) lavour_2.setVisibility(View.VISIBLE);
-        setValueFromMap(flavor_2_ml, "flml_2");
-        setValueFromMap(flavor_2_gramm, "fldr_2");
-        setValueFromMap(flavor_2_per, "flper_2");
-
-
-
-        if (!hashMap.get("flml_3").toString().equals("0.0")) lavour_3.setVisibility(View.VISIBLE);
-        setValueFromMap(flavor_3_ml, "flml_3");
-        setValueFromMap(flavor_3_gramm, "fldr_3");
-        setValueFromMap(flavor_3_per, "flper_3");
+        if (!recept.get("flavorMl_3").toString().equals("0.0"))
+            flavorLayout_3.setVisibility(View.VISIBLE);
+        setValueFromMap(flavorMl_3, "flavorMl_3");
+        setValueFromMap(flavorGrams_3, "flavorDrop_3");
+        setValueFromMap(flavorPercent_3, "flavorPercent_3");
 
     }
 
     private void setValueFromMap(TextView textview, String string) {
-        textview.setText(hashMap.get(string).toString());
+        textview.setText(recept.get(string).toString());
     }
 
     private void init() {
 
-        nicotine_juice_ml = (TextView) findViewById(R.id.nicotine_juice_ml);
-        nicotine_juice_gramm = (TextView) findViewById(R.id.nicotine_juice_gramm);
-        nicotine_juice_per = (TextView) findViewById(R.id.nicotine_juice_per);
-        pg_dilutant_ml = (TextView) findViewById(R.id.pg_dilutant_ml);
-        pg_dilutant_gramm = (TextView) findViewById(R.id.pg_dilutant_gramm);
-        pg_dilutant_per = (TextView) findViewById(R.id.pg_dilutant_per);
-        vg_dilutant_ml = (TextView) findViewById(R.id.vg_dilutant_ml);
-        vg_dilutant_gramm = (TextView) findViewById(R.id.vg_dilutant_gramm);
-        vg_dilutant_per = (TextView) findViewById(R.id.vg_dilutant_per);
-        wvg_ml = (TextView) findViewById(R.id.wvg_ml);
-        wvg_gramm = (TextView) findViewById(R.id.wvg_gramm);
-        wvg_per = (TextView) findViewById(R.id.wvg_per);
-        flavor_1_ml = (TextView) findViewById(R.id.flavor_1_ml);
-        flavor_1_gramm = (TextView) findViewById(R.id.flavor_1_gramm);
-        flavor_1_per = (TextView) findViewById(R.id.flavor_1_per);
-        flavor_2_ml = (TextView) findViewById(R.id.flavor_2_ml);
-        flavor_2_gramm = (TextView) findViewById(R.id.flavor_2_gramm);
-        flavor_2_per = (TextView) findViewById(R.id.flavor_2_per);
-        flavor_3_ml = (TextView) findViewById(R.id.flavor_3_ml);
-        flavor_3_gramm = (TextView) findViewById(R.id.flavor_3_gramm);
-        flavor_3_per = (TextView) findViewById(R.id.flavor_3_per);
+        nicotineJuiceMl = (TextView) findViewById(R.id.nicotine_juice_ml);
+        nicotineJuiceGrams = (TextView) findViewById(R.id.nicotine_juice_gramm);
+        nicotineJuicePercent = (TextView) findViewById(R.id.nicotine_juice_per);
+        pgMl = (TextView) findViewById(R.id.pg_dilutant_ml);
+        pgGrams = (TextView) findViewById(R.id.pg_dilutant_gramm);
+        pgPercent = (TextView) findViewById(R.id.pg_dilutant_per);
+        vgMl = (TextView) findViewById(R.id.vg_dilutant_ml);
+        vgGrams = (TextView) findViewById(R.id.vg_dilutant_gramm);
+        vgPercent = (TextView) findViewById(R.id.vg_dilutant_per);
+        waterMl = (TextView) findViewById(R.id.wvg_ml);
+        waterGrams = (TextView) findViewById(R.id.wvg_gramm);
+        waterPercent = (TextView) findViewById(R.id.wvg_per);
+        flavorMl_1 = (TextView) findViewById(R.id.flavor_1_ml);
+        flavorGrams_1 = (TextView) findViewById(R.id.flavor_1_gramm);
+        flavorPercent_1 = (TextView) findViewById(R.id.flavor_1_per);
+        flavorMl_2 = (TextView) findViewById(R.id.flavor_2_ml);
+        flavorGrams_2 = (TextView) findViewById(R.id.flavor_2_gramm);
+        flavorPercent_2 = (TextView) findViewById(R.id.flavor_2_per);
+        flavorMl_3 = (TextView) findViewById(R.id.flavor_3_ml);
+        flavorGrams_3 = (TextView) findViewById(R.id.flavor_3_gramm);
+        flavorPercent_3 = (TextView) findViewById(R.id.flavor_3_per);
 
-        lavour_1 = (LinearLayout) findViewById(R.id.layout_aroma_1);
-        lavour_2 = (LinearLayout) findViewById(R.id.layout_aroma_2);
-        lavour_3 = (LinearLayout) findViewById(R.id.layout_aroma_3);
-
+        flavorLayout_1 = (LinearLayout) findViewById(R.id.layout_aroma_1);
+        flavorLayout_2 = (LinearLayout) findViewById(R.id.layout_aroma_2);
+        flavorLayout_3 = (LinearLayout) findViewById(R.id.layout_aroma_3);
 
     }
 }
