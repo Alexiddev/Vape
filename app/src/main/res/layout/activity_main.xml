@@ -13,7 +13,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:weightSum="1"
-    tools:context="vape.val.liquid.MainActivity">
+    tools:context=".ui.MainActivity">
 
     <ScrollView
 
@@ -363,13 +363,13 @@
                 android:orientation="horizontal"
                 android:visibility="gone">
 
-                <TextView
+                <EditText
                     android:id="@+id/name_add_flavor_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:fontFamily="sans-serif"
-                    android:hint="@string/flavor_1"
+                    android:hint="@string/edit_flavor"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="italic" />
@@ -410,13 +410,13 @@
                 android:orientation="horizontal"
                 android:visibility="gone">
 
-                <TextView
+                <EditText
                     android:id="@+id/name_add_flavor_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:fontFamily="sans-serif"
-                    android:hint="@string/flavor_2"
+                    android:hint="@string/edit_flavor"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="italic" />
@@ -457,13 +457,13 @@
                 android:orientation="horizontal"
                 android:visibility="gone">
 
-                <TextView
+                <EditText
                     android:id="@+id/name_add_flavor_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:fontFamily="sans-serif"
-                    android:hint="@string/flavor_3"
+                    android:hint="@string/edit_flavor"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="italic" />

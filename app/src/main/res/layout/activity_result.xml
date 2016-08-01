@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,14 +11,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="vape.val.liquid.ResultActivity">
+    tools:context=".ui.ResultActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/layout_border"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout">
 
         <TextView
             android:id="@+id/textView"
@@ -54,7 +56,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:layout_below="@+id/linearLayout"
+        android:layout_above="@+id/adView_result"
+        android:id="@+id/scrollView">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -457,12 +462,31 @@
 
     </ScrollView>
 
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_home_footer"></com.google.android.gms.ads.AdView>
+        ads:adUnitId="@string/banner_home_footer"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"></com.google.android.gms.ads.AdView>
+
+    <io.github.yavski.fabspeeddial.FabSpeedDial
+        android:id="@+id/recept_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:fabBackgroundTint="@color/transpar"
+        android:backgroundTintMode="screen"
+        android:layout_gravity="left"
+        app:fabGravity="bottom_end"
+        app:fabMenu="@menu/menu_result"
+        app:miniFabBackgroundTint="@android:color/white"
+        app:miniFabDrawableTint="?attr/colorPrimaryDark"
+        app:miniFabTitleTextColor="?attr/colorPrimaryDark"
+        android:layout_above="@+id/adView_result"
+        android:layout_alignRight="@+id/scrollView"
+        android:layout_alignEnd="@+id/scrollView" />
 
 
-</LinearLayout>
+</RelativeLayout>

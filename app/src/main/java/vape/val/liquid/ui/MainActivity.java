@@ -1,10 +1,11 @@
-package vape.val.liquid;
+package vape.val.liquid.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,7 +15,10 @@ import com.rey.material.widget.Slider;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.HashMap;
+
+import vape.val.liquid.R;
+import vape.val.liquid.model.Liquid;
+import vape.val.liquid.util.RateThisApp;
 
 public class MainActivity extends AppCompatActivity {
     //http://e-liquid-recipes.com/create
@@ -31,9 +35,13 @@ public class MainActivity extends AppCompatActivity {
     private float valueFlavour_1;
     private float valueFlavour_2;
     private float valueFlavour_3;
+    private Liquid liquid;
+
+    private String flavorName1;
+    private String flavorName2;
+    private String flavorName3;
 
     private AdView mAdView;
-    private HashMap<String, Float> result;
 
 
     TextView amount_to_make;
@@ -65,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
     TextView count_add_flavor_1;
     TextView count_add_flavor_2;
     TextView count_add_flavor_3;
+    EditText flavourNameEditText_1;
+    EditText flavourNameEditText_2;
+    EditText flavourNameEditText_3;
     com.rey.material.widget.Slider slider_add_flavor_1;
     com.rey.material.widget.Slider slider_add_flavor_2;
     com.rey.material.widget.Slider slider_add_flavor_3;
@@ -75,8 +86,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         init();
         flavorOnClick();
+
+        RateThisApp.Config config = new RateThisApp.Config(3, 5);
+        RateThisApp.init(config);
+        RateThisApp.onStart(this);
+        RateThisApp.showRateDialogIfNeeded(this);
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void create() {
 
-        result = new HashMap<String, Float>();
+        liquid = new Liquid();
 
 
         valueAmountToMake = getFloatFromField(amount_to_make);
@@ -137,14 +154,22 @@ public class MainActivity extends AppCompatActivity {
         valueFlavour_1 = flavor_slider_1.getValue();
         valueFlavour_2 = flavor_slider_2.getValue();
         valueFlavour_3 = flavor_slider_3.getValue();
+        flavorName1 = flavourNameEditText_1.getText().toString();
+        flavorName2 = flavourNameEditText_2.getText().toString();
+        flavorName3 = flavourNameEditText_3.getText().toString();
+        if (flavorName1.equals("")) flavorName1 = getResources().getString(R.string.flavor_1);
+        if (flavorName2.equals("")) flavorName2 = getResources().getString(R.string.flavor_2);
+        if (flavorName3.equals("")) flavorName3 = getResources().getString(R.string.flavor_3);
+
+        liquid.setName("My");
 
 
         float nicotineJuiceMl = rounded((valueDesiredStrength / valueNicotineStrength * valueAmountToMake * 100) / 100, 2);
         float nicotineGrams = rounded((float) (100 * (valuePgNicotine / 100 * nicotineJuiceMl * 1.036 + valueVgNicotine / 100 * nicotineJuiceMl * 1.261)) / 100, 2);
         float nicotinePercent = rounded((float) ((nicotineJuiceMl / valueAmountToMake * 1E4) / 100), 1);
-        result.put("nicotineJuiceMl", nicotineJuiceMl);
-        result.put("nicotineGrams", nicotineGrams);
-        result.put("nicotinePercent", nicotinePercent);
+        liquid.setNicotineJuiceMl(nicotineJuiceMl);
+        liquid.setNicotineJuiceGrams(nicotineGrams);
+        liquid.setNicotineJuicePercent(nicotinePercent);
 
 
         float flavorMl = (valueFlavour_1 + valueFlavour_2 + valueFlavour_3) / 100 * valueAmountToMake;
@@ -152,51 +177,54 @@ public class MainActivity extends AppCompatActivity {
         float pgMl = rounded((100 * (valueDesiredPg / 100 * (valueAmountToMake - wvml - flavorMl) - valuePgNicotine / 100 * nicotineJuiceMl - 0)) / 100, 2);
         float pgGrams = rounded((float) ((1.036 * pgMl * 100) / 100), 2);
         float pgPercent = rounded((float) ((pgMl / valueAmountToMake * 1E4) / 100), 1);
-        result.put("pgMl", pgMl);
-        result.put("pgGrams", pgGrams);
-        result.put("pgPercent", pgPercent);
+        liquid.setPropyleneGlycolMl(pgMl);
+        liquid.setPropyleneGlycolGrams(pgGrams);
+        liquid.setPropyleneGlycolPercent(pgPercent);
 
 
         float vgMl = rounded((100 * (valueDesiredVg / 100 * (valueAmountToMake - wvml - flavorMl) - valueVgNicotine / 100 * nicotineJuiceMl - 0)) / 100, 2);
         float vgGrams = rounded((float) ((126.1 * vgMl) / 100), 2);
         float vgPercent = rounded(Math.round(vgMl / valueAmountToMake * 1E4) / 100, 1);
-        result.put("vgMl", vgMl);
-        result.put("vgGrams", vgGrams);
-        result.put("vgPercent", vgPercent);
+        liquid.setVegetableGlycerinMl(vgMl);
+        liquid.setVegetableGlycerinGrams(vgGrams);
+        liquid.setVegetableGlycerinPercent(vgPercent);
 
 
         float waterDrops = rounded((valueWater / 100 * valueAmountToMake * 100) / 100, 2);
         float waterGrams = rounded((float) ((93.8 * wvml) / 100), 2);
         float waterPercent = rounded(Math.round(wvml / valueAmountToMake * 1E4) / 100, 1);
-
-        result.put("waterDrops", waterDrops);
-        result.put("waterGrams", waterGrams);
-        result.put("waterPercent", waterPercent);
+        liquid.setWaterMl(waterDrops);
+        liquid.setWaterGrams(waterGrams);
+        liquid.setWaterPercent(waterPercent);
 
         float flavorMl_1 = rounded((float) ((valueAmountToMake / 100 * valueFlavour_1 * 1E3) / 1E3), 2);
         float flavorDrop_1 = rounded((float) (flavorMl_1 / 1.02), 2);
         float flavorPercent_1 = rounded((float) ((flavorMl_1 / valueAmountToMake * 1E4) / 100), 1);
-        result.put("flavorMl_1", flavorMl_1);
-        result.put("flavorDrop_1", flavorDrop_1);
-        result.put("flavorPercent_1", flavorPercent_1);
+
+        liquid.setFlavorName_1(flavorName1);
+        liquid.setFlavorMl_1(flavorMl_1);
+        liquid.setFlavorGrams_1(flavorDrop_1);
+        liquid.setFlavorPercent_1(flavorPercent_1);
 
         float flavorMl_2 = rounded((float) ((valueAmountToMake / 100 * valueFlavour_2 * 1E3) / 1E3), 2);
         float flavorDrop_2 = rounded((float) (flavorMl_2 / 1.02), 2);
         float flavorPercent_2 = rounded((float) ((flavorMl_2 / valueAmountToMake * 1E4) / 100), 1);
-        result.put("flavorMl_2", flavorMl_2);
-        result.put("flavorDrop_2", flavorDrop_2);
-        result.put("flavorPercent_2", flavorPercent_2);
+        liquid.setFlavorName_2(flavorName2);
+        liquid.setFlavorMl_2(flavorMl_2);
+        liquid.setFlavorGrams_2(flavorDrop_2);
+        liquid.setFlavorPercent_2(flavorPercent_2);
 
 
         float flavorMl_3 = rounded((float) ((valueAmountToMake / 100 * valueFlavour_3 * 1E3) / 1E3), 2);
         float flavorDrop_3 = rounded((float) (flavorMl_3 / 1.02), 2);
         float flavorPercent_3 = rounded((float) ((flavorMl_3 / valueAmountToMake * 1E4) / 100), 1);
-        result.put("flavorMl_3", flavorMl_3);
-        result.put("flavorDrop_3", flavorDrop_3);
-        result.put("flavorPercent_3", flavorPercent_3);
+        liquid.setFlavorName_3(flavorName3);
+        liquid.setFlavorMl_3(flavorMl_3);
+        liquid.setFlavorGrams_3(flavorDrop_3);
+        liquid.setFlavorPercent_3(flavorPercent_3);
 
         Intent intent = new Intent(this, ResultActivity.class);
-        intent.putExtra("resultMap", result);
+        intent.putExtra("liquid", liquid);
         startActivity(intent);
     }
 
@@ -245,6 +273,10 @@ public class MainActivity extends AppCompatActivity {
         flavor_slider_2 = (Slider) findViewById(R.id.slider_add_flavor_2);
         flavorLayout_3 = (LinearLayout) findViewById(R.id.add_flavor_layout_3);
         flavor_slider_3 = (Slider) findViewById(R.id.slider_add_flavor_3);
+
+        flavourNameEditText_1 = (EditText) findViewById(R.id.name_add_flavor_1);
+        flavourNameEditText_2 = (EditText) findViewById(R.id.name_add_flavor_2);
+        flavourNameEditText_3 = (EditText) findViewById(R.id.name_add_flavor_3);
 
 
         onPositionChangedForTwoElements(water_vodka_pga_slider, water_vodka_pga, null, null);

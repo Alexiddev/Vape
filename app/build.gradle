@@ -8,8 +8,8 @@ android {
         applicationId "vape.val.liquid"
         minSdkVersion 15
         targetSdkVersion 24
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 4
+        versionName "1.1.2"
     }
     buildTypes {
         release {
@@ -25,4 +25,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0-alpha2'
     compile 'com.github.rey5137:material:1.2.4'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
+    compile 'io.github.yavski:fab-speed-dial:1.0.4'
+
 }

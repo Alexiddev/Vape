@@ -12,6 +12,7 @@
     <string name="flavor_1">Flavor 1</string>
     <string name="flavor_2">Flavor 2</string>
     <string name="flavor_3">Flavor 3</string>
+    <string name="edit_flavor">Edit flavor name</string>
     <string name="create">Create</string>
     <string name="ml">ml</string>
     <string name="grams">Grams</string>
@@ -22,4 +23,15 @@
 
     <string name="banner_home_footer">ca-app-pub-7116840615884768/9296304134</string>
     <string name="banner_result">ca-app-pub-7116840615884768/1773037334</string>
+    <string name="share">Share</string>
+    <string name="save">Save</string>
+    <string name="liquid_name">Liquid name</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enjoying">Enjoying E-Cigarette liquid recipe?</string>
+    <string name="rta_dialog_title">Rate this app</string>
+    <string name="rta_dialog_message">How about a rating on the Play Store, then?</string>
+    <string name="rta_dialog_ok">Ok, sure</string>
+    <string name="rta_dialog_cancel">Later</string>
+    <string name="rta_dialog_no">No, thanks</string>
+    <string name="would_you_mind">Would you mind giving us some feedback?</string>
 </resources>
