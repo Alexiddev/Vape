@@ -11,15 +11,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-
-
-
 import io.github.yavski.fabspeeddial.FabSpeedDial;
 import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 import vape.val.liquid.R;
+import vape.val.liquid.database.SQLiteHelper;
 import vape.val.liquid.model.Liquid;
 
 public class ResultActivity extends AppCompatActivity {
@@ -111,6 +109,9 @@ public class ResultActivity extends AppCompatActivity {
                             case R.id.action_share:
                                 share(liquid);
                                 break;
+                            case R.id.action_save:
+                                save(liquid);
+                                break;
                         }
                     }
                 });
@@ -131,6 +132,14 @@ public class ResultActivity extends AppCompatActivity {
 
         alertDialog.show();
 
+
+    }
+
+    private void save(Liquid liquid) {
+
+            SQLiteHelper sQLiteHelper = new SQLiteHelper(ResultActivity.this);
+            sQLiteHelper.insertLiquid(liquid);
+             Toast.makeText(context, "Saved", Toast.LENGTH_LONG).show();
 
     }
 
@@ -190,7 +199,6 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void init() {
-
         nicotineJuiceMl = (TextView) findViewById(R.id.nicotine_juice_ml);
         nicotineJuiceGrams = (TextView) findViewById(R.id.nicotine_juice_gramm);
         nicotineJuicePercent = (TextView) findViewById(R.id.nicotine_juice_per);
@@ -215,13 +223,9 @@ public class ResultActivity extends AppCompatActivity {
         flavorGrams_3 = (TextView) findViewById(R.id.flavor_3_gramm);
         flavorPercent_3 = (TextView) findViewById(R.id.flavor_3_per);
         flavorName_3 = (TextView) findViewById(R.id.aroma_3);
-
         flavorLayout_1 = (LinearLayout) findViewById(R.id.layout_aroma_1);
         flavorLayout_2 = (LinearLayout) findViewById(R.id.layout_aroma_2);
         flavorLayout_3 = (LinearLayout) findViewById(R.id.layout_aroma_3);
-
         fabSpeedDial = (FabSpeedDial) findViewById(R.id.recept_menu);
-
-
     }
 }
