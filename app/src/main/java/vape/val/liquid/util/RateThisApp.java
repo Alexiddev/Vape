@@ -33,30 +33,9 @@ import android.util.Log;
 import java.lang.ref.WeakReference;
 import java.util.Date;
 
-import java.lang.ref.WeakReference;
-import java.util.Date;
-
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
-import android.support.annotation.StringRes;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import vape.val.liquid.R;
-import vape.val.liquid.ui.MainActivity;
-import vape.val.liquid.ui.ResultActivity;
 
 /**
  * RateThisApp<br>

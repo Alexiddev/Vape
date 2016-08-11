@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/smoke_cloud"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:weightSum="1"
+    tools:context=".ui.CreateRecipe"
+    android:id="@+id/fragment_create_recipe">
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/recipe_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/amount_to_make"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+
+                    android:text="@string/amount_to_make"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/amount_to_make_int"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/desired_strength"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:text="@string/desired_strength"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="italic" />
+
+                <EditText
+                    android:id="@+id/desired_strength_int"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="8" />
+
+
+            </LinearLayout>
+
+
+            <com.rey.material.widget.Slider
+                android:id="@+id/slider_water_vodka_pga"
+                style="@style/Material.Widget.Slider.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                app:sl_maxValue="100"
+                app:sl_minValue="0"
+                app:sl_primaryColor="@color/colorPrimary"
+                app:sl_value="0" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:text="@string/water_vodka_pga"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/water_vodka_pga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="0 %"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <com.rey.material.widget.Slider
+                android:id="@+id/desired_pg_slider"
+                style="@style/Material.Widget.Slider.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                app:sl_maxValue="100"
+                app:sl_minValue="0"
+                app:sl_primaryColor="@color/colorPrimary"
+                app:sl_value="50" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:text="@string/desired_pg"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/desired_pg_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="50 %"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+
+            <com.rey.material.widget.Slider
+                android:id="@+id/desired_vg_slider"
+                style="@style/Material.Widget.Slider.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                app:sl_maxValue="100"
+                app:sl_minValue="0"
+                app:sl_primaryColor="@color/colorPrimary"
+                app:sl_value="50" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/desired_vg"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:text="@string/desired_vg"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/desired_vg_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="50 %"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:text="@string/nicotine_strength"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="italic" />
+
+                <EditText
+                    android:id="@+id/nicotine_strength_int"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="100" />
+
+            </LinearLayout>
+
+
+            <com.rey.material.widget.Slider
+                android:id="@+id/pg_content_of_nicotine_slider"
+                style="@style/Material.Widget.Slider.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                app:sl_maxValue="100"
+                app:sl_minValue="0"
+                app:sl_primaryColor="@color/colorPrimary"
+                app:sl_value="100" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:text="@string/pg_content_of_nicotine"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/pg_content_of_nicotine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="100 %"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+
+            <com.rey.material.widget.Slider
+                android:id="@+id/vg_content_of_nicotine_int"
+
+                style="@style/Material.Widget.Slider.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                app:sl_maxValue="100"
+                app:sl_minValue="0"
+                app:sl_primaryColor="@color/colorPrimary"
+                app:sl_value="0" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:text="@string/vg_content_of_nicotine"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/vg_content_of_nicotine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="0 %"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+
+            <com.rey.material.widget.Slider
+                android:id="@+id/slider_add_flavor_1"
+                style="@style/Material.Widget.Slider.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:visibility="gone"
+                app:sl_maxValue="100"
+                app:sl_minValue="0"
+                app:sl_primaryColor="@color/colorPrimary"
+                app:sl_value="0" />
+
+            <LinearLayout
+                android:id="@+id/add_flavor_layout_1"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/name_add_flavor_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/edit_flavor"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/count_add_flavor_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="0 %"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+
+            </LinearLayout>
+
+            <com.rey.material.widget.Slider
+                android:id="@+id/slider_add_flavor_2"
+                style="@style/Material.Widget.Slider.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:visibility="gone"
+                app:sl_maxValue="100"
+                app:sl_minValue="0"
+                app:sl_primaryColor="@color/colorPrimary"
+                app:sl_value="0" />
+
+            <LinearLayout
+                android:id="@+id/add_flavor_layout_2"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/name_add_flavor_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/edit_flavor"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/count_add_flavor_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="0 %"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <com.rey.material.widget.Slider
+                android:id="@+id/slider_add_flavor_3"
+                style="@style/Material.Widget.Slider.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:visibility="gone"
+                app:sl_maxValue="100"
+                app:sl_minValue="0"
+                app:sl_primaryColor="@color/colorPrimary"
+                app:sl_value="0" />
+
+
+            <LinearLayout
+                android:id="@+id/add_flavor_layout_3"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/name_add_flavor_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/edit_flavor"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/count_add_flavor_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="0 %"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+
+            <com.rey.material.widget.Button
+
+                android:id="@+id/add_flavor"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/press_button"
+                android:text="@string/add_flavor"
+                app:rd_enable="true" />
+
+
+            <com.rey.material.widget.Button
+
+                android:id="@+id/create"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/press_button"
+                android:text="@string/create"
+                app:rd_enable="true" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_home_footer"></com.google.android.gms.ads.AdView>
+
+
+</LinearLayout>

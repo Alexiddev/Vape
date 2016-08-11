@@ -3,11 +3,15 @@ package vape.val.liquid.ui;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,7 +24,7 @@ import vape.val.liquid.R;
 import vape.val.liquid.database.SQLiteHelper;
 import vape.val.liquid.model.Liquid;
 
-public class ResultActivity extends AppCompatActivity {
+public class ResultActivity extends Fragment {
 
     private AdView mAdView;
 
@@ -65,21 +69,22 @@ public class ResultActivity extends AppCompatActivity {
     Context context;
 
     Liquid liquid;
+    View view;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
-        context = this;
+        view = inflater.inflate(R.layout.activity_create_recipe, container, false);
 
 
-        mAdView = (AdView) findViewById(R.id.adView_result);
+        mAdView = (AdView) view.findViewById(R.id.adView_result);
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
         mAdView.loadAd(adRequest);
 
 
-        Bundle data = getIntent().getExtras();
+        Bundle data = getActivity().getIntent().getExtras();
         liquid = data.getParcelable("liquid");
 
         init();
@@ -94,10 +99,12 @@ public class ResultActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        return view;
     }
 
     private void inputName(final int itemId) {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(ResultActivity.this);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
         alertDialog.setTitle(getString(R.string.liquid_name));
         alertDialog.setMessage(getString(R.string.enter_name));
 
@@ -137,7 +144,7 @@ public class ResultActivity extends AppCompatActivity {
 
     private void save(Liquid liquid) {
 
-            SQLiteHelper sQLiteHelper = new SQLiteHelper(ResultActivity.this);
+            SQLiteHelper sQLiteHelper = new SQLiteHelper(getActivity());
             sQLiteHelper.insertLiquid(liquid);
              Toast.makeText(context, "Saved", Toast.LENGTH_LONG).show();
 
@@ -199,33 +206,33 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void init() {
-        nicotineJuiceMl = (TextView) findViewById(R.id.nicotine_juice_ml);
-        nicotineJuiceGrams = (TextView) findViewById(R.id.nicotine_juice_gramm);
-        nicotineJuicePercent = (TextView) findViewById(R.id.nicotine_juice_per);
-        pgMl = (TextView) findViewById(R.id.pg_dilutant_ml);
-        pgGrams = (TextView) findViewById(R.id.pg_dilutant_gramm);
-        pgPercent = (TextView) findViewById(R.id.pg_dilutant_per);
-        vgMl = (TextView) findViewById(R.id.vg_dilutant_ml);
-        vgGrams = (TextView) findViewById(R.id.vg_dilutant_gramm);
-        vgPercent = (TextView) findViewById(R.id.vg_dilutant_per);
-        waterMl = (TextView) findViewById(R.id.wvg_ml);
-        waterGrams = (TextView) findViewById(R.id.wvg_gramm);
-        waterPercent = (TextView) findViewById(R.id.wvg_per);
-        flavorMl_1 = (TextView) findViewById(R.id.flavor_1_ml);
-        flavorGrams_1 = (TextView) findViewById(R.id.flavor_1_gramm);
-        flavorPercent_1 = (TextView) findViewById(R.id.flavor_1_per);
-        flavorName_1 = (TextView) findViewById(R.id.aroma_1);
-        flavorMl_2 = (TextView) findViewById(R.id.flavor_2_ml);
-        flavorGrams_2 = (TextView) findViewById(R.id.flavor_2_gramm);
-        flavorPercent_2 = (TextView) findViewById(R.id.flavor_2_per);
-        flavorName_2 = (TextView) findViewById(R.id.aroma_2);
-        flavorMl_3 = (TextView) findViewById(R.id.flavor_3_ml);
-        flavorGrams_3 = (TextView) findViewById(R.id.flavor_3_gramm);
-        flavorPercent_3 = (TextView) findViewById(R.id.flavor_3_per);
-        flavorName_3 = (TextView) findViewById(R.id.aroma_3);
-        flavorLayout_1 = (LinearLayout) findViewById(R.id.layout_aroma_1);
-        flavorLayout_2 = (LinearLayout) findViewById(R.id.layout_aroma_2);
-        flavorLayout_3 = (LinearLayout) findViewById(R.id.layout_aroma_3);
-        fabSpeedDial = (FabSpeedDial) findViewById(R.id.recept_menu);
+        nicotineJuiceMl = (TextView) view.findViewById(R.id.nicotine_juice_ml);
+        nicotineJuiceGrams = (TextView) view.findViewById(R.id.nicotine_juice_gramm);
+        nicotineJuicePercent = (TextView) view.findViewById(R.id.nicotine_juice_per);
+        pgMl = (TextView) view.findViewById(R.id.pg_dilutant_ml);
+        pgGrams = (TextView) view.findViewById(R.id.pg_dilutant_gramm);
+        pgPercent = (TextView) view.findViewById(R.id.pg_dilutant_per);
+        vgMl = (TextView) view.findViewById(R.id.vg_dilutant_ml);
+        vgGrams = (TextView) view.findViewById(R.id.vg_dilutant_gramm);
+        vgPercent = (TextView) view.findViewById(R.id.vg_dilutant_per);
+        waterMl = (TextView) view.findViewById(R.id.wvg_ml);
+        waterGrams = (TextView) view.findViewById(R.id.wvg_gramm);
+        waterPercent = (TextView) view.findViewById(R.id.wvg_per);
+        flavorMl_1 = (TextView) view.findViewById(R.id.flavor_1_ml);
+        flavorGrams_1 = (TextView) view.findViewById(R.id.flavor_1_gramm);
+        flavorPercent_1 = (TextView) view.findViewById(R.id.flavor_1_per);
+        flavorName_1 = (TextView) view.findViewById(R.id.aroma_1);
+        flavorMl_2 = (TextView) view.findViewById(R.id.flavor_2_ml);
+        flavorGrams_2 = (TextView) view.findViewById(R.id.flavor_2_gramm);
+        flavorPercent_2 = (TextView) view.findViewById(R.id.flavor_2_per);
+        flavorName_2 = (TextView) view.findViewById(R.id.aroma_2);
+        flavorMl_3 = (TextView) view.findViewById(R.id.flavor_3_ml);
+        flavorGrams_3 = (TextView) view.findViewById(R.id.flavor_3_gramm);
+        flavorPercent_3 = (TextView) view.findViewById(R.id.flavor_3_per);
+        flavorName_3 = (TextView) view.findViewById(R.id.aroma_3);
+        flavorLayout_1 = (LinearLayout) view.findViewById(R.id.layout_aroma_1);
+        flavorLayout_2 = (LinearLayout) view.findViewById(R.id.layout_aroma_2);
+        flavorLayout_3 = (LinearLayout) view.findViewById(R.id.layout_aroma_3);
+        fabSpeedDial = (FabSpeedDial) view.findViewById(R.id.recept_menu);
     }
 }
