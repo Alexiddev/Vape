@@ -23,6 +23,7 @@ import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 import vape.val.liquid.R;
 import vape.val.liquid.database.SQLiteHelper;
 import vape.val.liquid.model.Liquid;
+import vape.val.liquid.util.Util;
 
 public class ResultActivity extends Fragment {
 
@@ -75,18 +76,13 @@ public class ResultActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        view = inflater.inflate(R.layout.activity_create_recipe, container, false);
 
+        view = inflater.inflate(R.layout.activity_result, container, false);
 
-        mAdView = (AdView) view.findViewById(R.id.adView_result);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        mAdView.loadAd(adRequest);
-
-
-        Bundle data = getActivity().getIntent().getExtras();
-        liquid = data.getParcelable("liquid");
-
+         Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            liquid = bundle.getParcelable("liquid");
+        }
         init();
         setValue();
 
@@ -114,10 +110,10 @@ public class ResultActivity extends Fragment {
                         liquid.setName(inputName.getText().toString());
                         switch (itemId){
                             case R.id.action_share:
-                                share(liquid);
+                                Util.share(liquid, getActivity());
                                 break;
                             case R.id.action_save:
-                                save(liquid);
+                                Util.save(liquid, getActivity());
                                 break;
                         }
                     }
@@ -130,7 +126,7 @@ public class ResultActivity extends Fragment {
                     }
                 });
 
-        inputName = new EditText(context);
+        inputName = new EditText(getActivity());
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
@@ -140,21 +136,6 @@ public class ResultActivity extends Fragment {
         alertDialog.show();
 
 
-    }
-
-    private void save(Liquid liquid) {
-
-            SQLiteHelper sQLiteHelper = new SQLiteHelper(getActivity());
-            sQLiteHelper.insertLiquid(liquid);
-             Toast.makeText(context, "Saved", Toast.LENGTH_LONG).show();
-
-    }
-
-    protected void share(Liquid liquid) {
-        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, liquid.toString());
-        startActivity(Intent.createChooser(sharingIntent, getString(R.string.share)));
     }
 
     private void setValue() {
@@ -235,4 +216,5 @@ public class ResultActivity extends Fragment {
         flavorLayout_3 = (LinearLayout) view.findViewById(R.id.layout_aroma_3);
         fabSpeedDial = (FabSpeedDial) view.findViewById(R.id.recept_menu);
     }
+
 }

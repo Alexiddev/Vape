@@ -2,6 +2,8 @@ package vape.val.liquid.ui;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -110,16 +112,9 @@ public class CreateRecipe extends Fragment {
             }
         });
 
-        mAdView = (AdView) view.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        mAdView.loadAd(adRequest);
 
-        SQLiteHelper sQLiteHelper = new SQLiteHelper(getActivity());
-        ArrayList arrayList = sQLiteHelper.getAllRecords();
-        for (int i = 0; i < arrayList.size(); i++) {
-            Log.i("sadasd", "fuuuuuu " + arrayList.get(i).toString());
-        }
+
+
 
         return view;
     }
@@ -237,9 +232,16 @@ public class CreateRecipe extends Fragment {
         liquid.setFlavorGrams_3(flavorDrop_3);
         liquid.setFlavorPercent_3(flavorPercent_3);
 
-        Intent intent = new Intent(getActivity(), ResultActivity.class);
-        intent.putExtra("liquid", liquid);
-        startActivity(intent);
+
+        Fragment fragmentResult = new ResultActivity();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("liquid", liquid);
+        fragmentResult.setArguments(bundle);
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.headlines_fragment, fragmentResult);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     private float rounded(float input, int umberOfCharacters) {

@@ -101,7 +101,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         database.close();
     }
 
-    public void deleteGif(Liquid liquid) {
+    public void deleteLiquid(Liquid liquid) {
         database = this.getReadableDatabase();
         database.execSQL("delete from " + TABLE_NAME + " where " + NAME + " = '" + liquid.getName() + "'");
         database.close();
@@ -115,7 +115,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         if (cursor.getCount() > 0) {
             for (int i = 0; i < cursor.getCount(); i++) {
                 cursor.moveToNext();
-                liquid = new Liquid();
+                liquid = new Liquid(cursor.getString(0),  cursor.getFloat(1),  cursor.getFloat(2),  cursor.getFloat(3),
+                        cursor.getFloat(4),  cursor.getFloat(5),  cursor.getFloat(6),  cursor.getFloat(7),  cursor.getFloat(8),
+                        cursor.getFloat(9),  cursor.getFloat(10),  cursor.getFloat(11),  cursor.getFloat(12),  cursor.getFloat(13),
+                        cursor.getFloat(14),  cursor.getFloat(15),  cursor.getString(16),  cursor.getFloat(17),  cursor.getFloat(18),
+                        cursor.getFloat(19),  cursor.getString(20),  cursor.getFloat(21),  cursor.getFloat(22),  cursor.getFloat(23),
+                        cursor.getString(24));
                 liquids.add(liquid);
             }
         }

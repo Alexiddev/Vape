@@ -40,4 +40,12 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_new_recipe">Create new recipe</string>
+    <string name="my_recipes">My recipes</string>
+    <string name="delete">Delete</string>
+    <string name="no_recipe">You have\'n saved recipes</string>
+    <string name="title_activity_d">d</string>
 </resources>

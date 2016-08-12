@@ -41,7 +41,40 @@ public class Liquid implements Parcelable {
     private String flavorName_3;
 
     public Liquid() {
+    }
 
+
+    public Liquid(String name, float nicotineJuiceMl, float nicotineJuiceGrams, float nicotineJuicePercent, float propyleneGlycolMl,
+                  float propyleneGlycolGrams, float propyleneGlycolPercent, float vegetableGlycerinMl, float vegetableGlycerinGrams,
+                  float vegetableGlycerinPercent, float waterMl, float waterGrams, float waterPercent, float flavorMl_1,
+                  float flavorGrams_1, float flavorPercent_1, String flavorName_1, float flavorMl_2, float flavorGrams_2,
+                  float flavorPercent_2, String flavorName_2, float flavorMl_3, float flavorGrams_3, float flavorPercent_3,
+                  String flavorName_3) {
+        this.name = name;
+        this.nicotineJuiceMl = nicotineJuiceMl;
+        this.nicotineJuiceGrams = nicotineJuiceGrams;
+        this.nicotineJuicePercent = nicotineJuicePercent;
+        this.propyleneGlycolMl = propyleneGlycolMl;
+        this.propyleneGlycolGrams = propyleneGlycolGrams;
+        this.propyleneGlycolPercent = propyleneGlycolPercent;
+        this.vegetableGlycerinMl = vegetableGlycerinMl;
+        this.vegetableGlycerinGrams = vegetableGlycerinGrams;
+        this.vegetableGlycerinPercent = vegetableGlycerinPercent;
+        this.waterMl = waterMl;
+        this.waterGrams = waterGrams;
+        this.waterPercent = waterPercent;
+        this.flavorMl_1 = flavorMl_1;
+        this.flavorGrams_1 = flavorGrams_1;
+        this.flavorPercent_1 = flavorPercent_1;
+        this.flavorName_1 = flavorName_1;
+        this.flavorMl_2 = flavorMl_2;
+        this.flavorGrams_2 = flavorGrams_2;
+        this.flavorPercent_2 = flavorPercent_2;
+        this.flavorName_2 = flavorName_2;
+        this.flavorMl_3 = flavorMl_3;
+        this.flavorGrams_3 = flavorGrams_3;
+        this.flavorPercent_3 = flavorPercent_3;
+        this.flavorName_3 = flavorName_3;
     }
 
     public String getName() {
@@ -247,6 +280,10 @@ public class Liquid implements Parcelable {
 
     @Override
     public String toString() {
+        return name;
+    }
+
+    public String forShareString() {
 
         String forShare = "Liquid " + name +
                 ", Nicotine juice (ml=" + nicotineJuiceMl +
@@ -289,6 +326,7 @@ public class Liquid implements Parcelable {
         forShare += "  https://play.google.com/store/apps/details?id=vape.val.liquid";
         return forShare;
     }
+
 
     @Override
     public int describeContents() {

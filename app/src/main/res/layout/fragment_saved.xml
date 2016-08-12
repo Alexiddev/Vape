@@ -5,21 +5,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/smoke_cloud"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ui.ResultActivity">
+    tools:context=".ui.ResultActivity"
+    android:id="@+id/main_saved_layout">
 
+
+
+    <com.rey.material.widget.Spinner
+        style="@style/Material.Widget.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/spinner"
+        android:foregroundGravity="center"
+        ads:spn_labelTextSize="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:rd_style="@style/Material.Drawable.Ripple.Wave" />
 
     <LinearLayout
+        android:layout_below="@+id/spinner"
         android:layout_width="match_parent"
+       android:layout_marginTop="20dp"
         android:layout_height="40dp"
         android:background="@drawable/layout_border"
         android:orientation="horizontal"
-        android:id="@+id/linearLayout">
+        android:id="@+id/headLayout">
 
         <TextView
             android:id="@+id/textView"
@@ -57,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_below="@+id/linearLayout"
+        android:layout_below="@+id/headLayout"
         android:id="@+id/scrollView">
 
         <LinearLayout
@@ -470,7 +484,7 @@
         android:backgroundTintMode="screen"
         android:layout_gravity="left"
         app:fabGravity="bottom_end"
-        app:fabMenu="@menu/menu_result"
+        app:fabMenu="@menu/menu_delete"
         app:miniFabBackgroundTint="@android:color/white"
         app:miniFabDrawableTint="?attr/colorPrimaryDark"
         app:miniFabTitleTextColor="?attr/colorPrimaryDark"
@@ -479,4 +493,7 @@
         android:layout_alignEnd="@+id/scrollView" />
 
 
+
+
 </RelativeLayout>
+
