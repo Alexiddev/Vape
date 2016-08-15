@@ -3,6 +3,7 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_create_recipe"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/smoke_cloud"
@@ -12,8 +13,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:weightSum="1"
-    tools:context=".ui.CreateRecipe"
-    android:id="@+id/fragment_create_recipe">
+    tools:context=".ui.recipe.main_recipe.CreateRecipeFragment">
 
     <ScrollView
 
@@ -515,9 +515,6 @@
 
 
     </ScrollView>
-
-
-
 
 
 </LinearLayout>

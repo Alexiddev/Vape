@@ -29,12 +29,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.StringRes;
 import android.util.Log;
-
 import java.lang.ref.WeakReference;
 import java.util.Date;
-
 import android.support.v7.app.AlertDialog;
-
 import vape.val.liquid.R;
 
 /**
@@ -126,88 +123,42 @@ public class RateThisApp {
             alertDialog.setMessage(alertDialogID);
 
             alertDialog.setPositiveButton("Yes!",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            showRateDialog(context);
-                        }
+                    (dialog, which) -> {
+                        showRateDialog(context);
                     });
 
             alertDialog.setNegativeButton("Not really",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            int alertDialogID = sConfig.mYesButtonId != 0 ? sConfig.mYesButtonId : R.string.would_you_mind;
-                            AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-                            alertDialog.setMessage(alertDialogID);
+                    (dialog, which) -> {
+                        int alertDialogID1 = sConfig.mYesButtonId != 0 ? sConfig.mYesButtonId : R.string.would_you_mind;
+                        AlertDialog.Builder alertDialog1 = new AlertDialog.Builder(context);
+                        alertDialog1.setMessage(alertDialogID1);
 
-                            alertDialog.setPositiveButton("Ok, sure",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            sendEmail(context);
-                                            if (sCallback != null) {
-                                                sCallback.onNoClicked();
-                                            }
-                                            setOptOut(context, true);
-                                        }
-                                    });
+                        alertDialog1.setPositiveButton("Ok, sure",
+                                (dialog1, which1) -> {
+                                    sendEmail(context);
+                                    if (sCallback != null) {
+                                        sCallback.onNoClicked();
+                                    }
+                                    setOptOut(context, true);
+                                });
 
-                            alertDialog.setNegativeButton("No, thanks",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            if (sCallback != null) {
-                                                sCallback.onNoClicked();
-                                            }
-                                            setOptOut(context, true);
-                                        }
-                                    });
-                            alertDialog.show();
-                        }
+                        alertDialog1.setNegativeButton("No, thanks",
+                                (dialog1, which1) -> {
+                                    if (sCallback != null) {
+                                        sCallback.onNoClicked();
+                                    }
+                                    setOptOut(context, true);
+                                });
+                        alertDialog1.show();
                     });
             alertDialog.show();
-
-
-
             return true;
         } else {
             return false;
         }
     }
 
-    /**
-     * Show the rate dialog if the criteria is satisfied.
-     * @param context Context
-     * @param themeId Theme ID
-     * @return true if shown, false otherwise.
-     */
-    public static boolean showRateDialogIfNeeded(final Context context, final int themeId) {
-        if (shouldShowRateDialog()) {
-
-
-            int alertDialogID = sConfig.mYesButtonId != 0 ? sConfig.mYesButtonId : vape.val.liquid.R.string.enjoying;
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-            alertDialog.setMessage(alertDialogID);
-
-            alertDialog.setPositiveButton("Yes!",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            showRateDialog(context, themeId);
-                        }
-                    });
-
-            alertDialog.setNegativeButton("Not really",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-            alertDialog.show();
-
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
+    
     /**
      * Check whether the rate dialog should be shown or not.
      * Developers may call this method directly if they want to show their own view instead of
@@ -249,14 +200,7 @@ public class RateThisApp {
         showRateDialog(context, builder);
     }
 
-    /**
-     * Stop showing the rate dialog
-     * @param context
-     */
-    public static void stopRateDialog(final Context context){
-        setOptOut(context, true);
-    }
-
+   
     private static void showRateDialog(final Context context, AlertDialog.Builder builder) {
         if (sDialogRef != null && sDialogRef.get() != null) {
             // Dialog is already present
@@ -269,43 +213,29 @@ public class RateThisApp {
         int rateButtonID = sConfig.mYesButtonId != 0 ? sConfig.mYesButtonId : vape.val.liquid.R.string.rta_dialog_ok;
         builder.setTitle(titleId);
         builder.setMessage(messageId);
-        builder.setPositiveButton(rateButtonID, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (sCallback != null) {
-                    sCallback.onYesClicked();
-                }
-                String appPackage = context.getPackageName();
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackage));
-                context.startActivity(intent);
-                setOptOut(context, true);
+        builder.setPositiveButton(rateButtonID, (dialog, which) -> {
+            if (sCallback != null) {
+                sCallback.onYesClicked();
             }
+            String appPackage = context.getPackageName();
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackage));
+            context.startActivity(intent);
+            setOptOut(context, true);
         });
-        builder.setNegativeButton(thanksButtonID, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (sCallback != null) {
-                    sCallback.onNoClicked();
-                }
-                setOptOut(context, true);
+        builder.setNegativeButton(thanksButtonID, (dialog, which) -> {
+            if (sCallback != null) {
+                sCallback.onNoClicked();
             }
+            setOptOut(context, true);
         });
-        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                if (sCallback != null) {
-                    sCallback.onCancelClicked();
-                }
-                clearSharedPreferences(context);
-                storeAskLaterDate(context);
+        builder.setOnCancelListener(dialog -> {
+            if (sCallback != null) {
+                sCallback.onCancelClicked();
             }
+            clearSharedPreferences(context);
+            storeAskLaterDate(context);
         });
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                sDialogRef.clear();
-            }
-        });
+        builder.setOnDismissListener(dialog -> sDialogRef.clear());
         sDialogRef = new WeakReference<>(builder.show());
     }
 
@@ -425,38 +355,6 @@ public class RateThisApp {
         public void setTitle(@StringRes int stringId) {
             this.mTitleId = stringId;
         }
-
-        /**
-         * Set message string ID.
-         * @param stringId
-         */
-        public void setMessage(@StringRes int stringId) {
-            this.mMessageId = stringId;
-        }
-
-        /**
-         * Set rate now string ID.
-         * @param stringId
-         */
-        public void setYesButtonText(@StringRes int stringId) {
-            this.mYesButtonId = stringId;
-        }
-
-        /**
-         * Set no thanks string ID.
-         * @param stringId
-         */
-        public void setNoButtonText(@StringRes int stringId) {
-            this.mNoButtonId = stringId;
-        }
-
-        /**
-         * Set cancel string ID.
-         * @param stringId
-         */
-        public void setCancelButtonText(@StringRes int stringId) {
-            this.mCancelButton = stringId;
-        }
     }
 
     /**
@@ -482,8 +380,8 @@ public class RateThisApp {
     protected static void sendEmail(Context context) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"alexiddev@gmail.com"});
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Vape");
+        intent.putExtra(Intent.EXTRA_EMAIL  , new String[]{context.getString(R.string.email)});
+        intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.vape));
         intent.putExtra(Intent.EXTRA_TEXT   , "body of email");
         context.startActivity(Intent.createChooser(intent, "Send mail..."));
     }

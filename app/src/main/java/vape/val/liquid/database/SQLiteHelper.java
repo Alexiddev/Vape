@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.ContactsContract;
 
 import java.util.ArrayList;
 
@@ -49,7 +48,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -115,11 +113,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         if (cursor.getCount() > 0) {
             for (int i = 0; i < cursor.getCount(); i++) {
                 cursor.moveToNext();
-                liquid = new Liquid(cursor.getString(0),  cursor.getFloat(1),  cursor.getFloat(2),  cursor.getFloat(3),
-                        cursor.getFloat(4),  cursor.getFloat(5),  cursor.getFloat(6),  cursor.getFloat(7),  cursor.getFloat(8),
-                        cursor.getFloat(9),  cursor.getFloat(10),  cursor.getFloat(11),  cursor.getFloat(12),  cursor.getFloat(13),
-                        cursor.getFloat(14),  cursor.getFloat(15),  cursor.getString(16),  cursor.getFloat(17),  cursor.getFloat(18),
-                        cursor.getFloat(19),  cursor.getString(20),  cursor.getFloat(21),  cursor.getFloat(22),  cursor.getFloat(23),
+                liquid = new Liquid(cursor.getString(0), cursor.getFloat(1), cursor.getFloat(2), cursor.getFloat(3),
+                        cursor.getFloat(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getFloat(8),
+                        cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getFloat(12), cursor.getFloat(13),
+                        cursor.getFloat(14), cursor.getFloat(15), cursor.getString(16), cursor.getFloat(17), cursor.getFloat(18),
+                        cursor.getFloat(19), cursor.getString(20), cursor.getFloat(21), cursor.getFloat(22), cursor.getFloat(23),
                         cursor.getString(24));
                 liquids.add(liquid);
             }

@@ -3,6 +3,7 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_saved_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -10,30 +11,28 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ui.ResultActivity"
-    android:id="@+id/main_saved_layout">
-
+    tools:context=".ui.recipe.main_recipe.ResultFragment">
 
 
     <com.rey.material.widget.Spinner
+        android:id="@+id/spinner"
         style="@style/Material.Widget.Spinner"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:id="@+id/spinner"
-        android:foregroundGravity="center"
-        ads:spn_labelTextSize="40dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:foregroundGravity="center"
+        ads:spn_labelTextSize="40dp"
         app:rd_style="@style/Material.Drawable.Ripple.Wave" />
 
     <LinearLayout
-        android:layout_below="@+id/spinner"
+        android:id="@+id/headLayout"
         android:layout_width="match_parent"
-       android:layout_marginTop="20dp"
         android:layout_height="40dp"
+        android:layout_below="@+id/spinner"
+        android:layout_marginTop="20dp"
         android:background="@drawable/layout_border"
-        android:orientation="horizontal"
-        android:id="@+id/headLayout">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView"
@@ -68,11 +67,11 @@
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_below="@+id/headLayout"
-        android:id="@+id/scrollView">
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -480,19 +479,17 @@
         android:id="@+id/recept_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        ads:fabBackgroundTint="@color/transpar"
-        android:backgroundTintMode="screen"
+        android:layout_alignEnd="@+id/scrollView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/scrollView"
         android:layout_gravity="left"
+        android:backgroundTintMode="screen"
+        ads:fabBackgroundTint="@color/transpar"
         app:fabGravity="bottom_end"
         app:fabMenu="@menu/menu_delete"
         app:miniFabBackgroundTint="@android:color/white"
         app:miniFabDrawableTint="?attr/colorPrimaryDark"
-        app:miniFabTitleTextColor="?attr/colorPrimaryDark"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/scrollView"
-        android:layout_alignEnd="@+id/scrollView" />
-
-
+        app:miniFabTitleTextColor="?attr/colorPrimaryDark" />
 
 
 </RelativeLayout>

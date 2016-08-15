@@ -48,4 +48,14 @@
     <string name="delete">Delete</string>
     <string name="no_recipe">You have\'n saved recipes</string>
     <string name="title_activity_d">d</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="ok">OK</string>
+    <string name="vape">Vape</string>
+    <string name="email">alexiddev@gmail.com</string>
+
+
+    <!--http://e-liquid-recipes.com/create-->
+    <!--http://www.danstools.com/javascript-beautify/    -->
+
 </resources>
