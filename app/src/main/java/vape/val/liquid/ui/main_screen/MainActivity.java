@@ -16,6 +16,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import vape.val.liquid.R;
+import vape.val.liquid.ui.ohms_law_calculator.OhmsFragment;
 import vape.val.liquid.ui.recipe.main_recipe.CreateRecipeFragment;
 import vape.val.liquid.ui.recipe.main_recipe.SavedFragment;
 import vape.val.liquid.util.RateThisApp;
@@ -68,7 +69,7 @@ public class MainActivity extends ActionBarActivity
         if (id == R.id.nav_create_new_recipe) {
             fragment = new CreateRecipeFragment();
         } else if (id == R.id.nav_saved) {
-            fragment = new SavedFragment();
+            fragment = new OhmsFragment();
         } else if (id == R.id.nav_share) {
             Util.shareApp(context);
         }

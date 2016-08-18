@@ -53,9 +53,12 @@
     <string name="ok">OK</string>
     <string name="vape">Vape</string>
     <string name="email">alexiddev@gmail.com</string>
+    <string name="enter_any_two_variables">Enter any two variables</string>
+    <string name="calculate">Calculate</string>
 
 
     <!--http://e-liquid-recipes.com/create-->
     <!--http://www.danstools.com/javascript-beautify/    -->
+    <!--https://www.misthub.com/blogs/vape-tutorials/76788933-tutorial-ohms-law-and-vape-safety-calculator-->
 
 </resources>
