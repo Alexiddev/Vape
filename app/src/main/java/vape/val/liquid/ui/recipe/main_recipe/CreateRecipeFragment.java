@@ -20,6 +20,7 @@ import java.math.RoundingMode;
 import vape.val.liquid.R;
 import vape.val.liquid.model.Liquid;
 import vape.val.liquid.util.RateThisApp;
+import vape.val.liquid.util.Util;
 
 public class CreateRecipeFragment extends Fragment {
     private int count_flavor;
@@ -138,9 +139,9 @@ public class CreateRecipeFragment extends Fragment {
         liquid.setName("My");
 
 
-        float nicotineJuiceMl = rounded((valueDesiredStrength / valueNicotineStrength * valueAmountToMake * 100) / 100, 2);
-        float nicotineGrams = rounded((float) (100 * (valuePgNicotine / 100 * nicotineJuiceMl * 1.036 + valueVgNicotine / 100 * nicotineJuiceMl * 1.261)) / 100, 2);
-        float nicotinePercent = rounded((float) ((nicotineJuiceMl / valueAmountToMake * 1E4) / 100), 1);
+        float nicotineJuiceMl = Util.rounded((valueDesiredStrength / valueNicotineStrength * valueAmountToMake * 100) / 100, 2);
+        float nicotineGrams = Util.rounded((float) (100 * (valuePgNicotine / 100 * nicotineJuiceMl * 1.036 + valueVgNicotine / 100 * nicotineJuiceMl * 1.261)) / 100, 2);
+        float nicotinePercent = Util.rounded((float) ((nicotineJuiceMl / valueAmountToMake * 1E4) / 100), 1);
         liquid.setNicotineJuiceMl(nicotineJuiceMl);
         liquid.setNicotineJuiceGrams(nicotineGrams);
         liquid.setNicotineJuicePercent(nicotinePercent);
@@ -148,50 +149,50 @@ public class CreateRecipeFragment extends Fragment {
 
         float flavorMl = (valueFlavour_1 + valueFlavour_2 + valueFlavour_3) / 100 * valueAmountToMake;
         float wvml = (valueWater / 100 * valueAmountToMake * 100) / 100;
-        float pgMl = rounded((100 * (valueDesiredPg / 100 * (valueAmountToMake - wvml - flavorMl) - valuePgNicotine / 100 * nicotineJuiceMl - 0)) / 100, 2);
-        float pgGrams = rounded((float) ((1.036 * pgMl * 100) / 100), 2);
-        float pgPercent = rounded((float) ((pgMl / valueAmountToMake * 1E4) / 100), 1);
+        float pgMl = Util.rounded((100 * (valueDesiredPg / 100 * (valueAmountToMake - wvml - flavorMl) - valuePgNicotine / 100 * nicotineJuiceMl - 0)) / 100, 2);
+        float pgGrams = Util.rounded((float) ((1.036 * pgMl * 100) / 100), 2);
+        float pgPercent = Util.rounded((float) ((pgMl / valueAmountToMake * 1E4) / 100), 1);
         liquid.setPropyleneGlycolMl(pgMl);
         liquid.setPropyleneGlycolGrams(pgGrams);
         liquid.setPropyleneGlycolPercent(pgPercent);
 
 
-        float vgMl = rounded((100 * (valueDesiredVg / 100 * (valueAmountToMake - wvml - flavorMl) - valueVgNicotine / 100 * nicotineJuiceMl - 0)) / 100, 2);
-        float vgGrams = rounded((float) ((126.1 * vgMl) / 100), 2);
-        float vgPercent = rounded(Math.round(vgMl / valueAmountToMake * 1E4) / 100, 1);
+        float vgMl = Util.rounded((100 * (valueDesiredVg / 100 * (valueAmountToMake - wvml - flavorMl) - valueVgNicotine / 100 * nicotineJuiceMl - 0)) / 100, 2);
+        float vgGrams = Util.rounded((float) ((126.1 * vgMl) / 100), 2);
+        float vgPercent = Util.rounded(Math.round(vgMl / valueAmountToMake * 1E4) / 100, 1);
         liquid.setVegetableGlycerinMl(vgMl);
         liquid.setVegetableGlycerinGrams(vgGrams);
         liquid.setVegetableGlycerinPercent(vgPercent);
 
 
-        float waterDrops = rounded((valueWater / 100 * valueAmountToMake * 100) / 100, 2);
-        float waterGrams = rounded((float) ((93.8 * wvml) / 100), 2);
-        float waterPercent = rounded(Math.round(wvml / valueAmountToMake * 1E4) / 100, 1);
+        float waterDrops = Util.rounded((valueWater / 100 * valueAmountToMake * 100) / 100, 2);
+        float waterGrams = Util.rounded((float) ((93.8 * wvml) / 100), 2);
+        float waterPercent = Util.rounded(Math.round(wvml / valueAmountToMake * 1E4) / 100, 1);
         liquid.setWaterMl(waterDrops);
         liquid.setWaterGrams(waterGrams);
         liquid.setWaterPercent(waterPercent);
 
-        float flavorMl_1 = rounded((float) ((valueAmountToMake / 100 * valueFlavour_1 * 1E3) / 1E3), 2);
-        float flavorDrop_1 = rounded((float) (flavorMl_1 / 1.02), 2);
-        float flavorPercent_1 = rounded((float) ((flavorMl_1 / valueAmountToMake * 1E4) / 100), 1);
+        float flavorMl_1 = Util.rounded((float) ((valueAmountToMake / 100 * valueFlavour_1 * 1E3) / 1E3), 2);
+        float flavorDrop_1 = Util.rounded((float) (flavorMl_1 / 1.02), 2);
+        float flavorPercent_1 = Util.rounded((float) ((flavorMl_1 / valueAmountToMake * 1E4) / 100), 1);
 
         liquid.setFlavorName_1(flavorName1);
         liquid.setFlavorMl_1(flavorMl_1);
         liquid.setFlavorGrams_1(flavorDrop_1);
         liquid.setFlavorPercent_1(flavorPercent_1);
 
-        float flavorMl_2 = rounded((float) ((valueAmountToMake / 100 * valueFlavour_2 * 1E3) / 1E3), 2);
-        float flavorDrop_2 = rounded((float) (flavorMl_2 / 1.02), 2);
-        float flavorPercent_2 = rounded((float) ((flavorMl_2 / valueAmountToMake * 1E4) / 100), 1);
+        float flavorMl_2 = Util.rounded((float) ((valueAmountToMake / 100 * valueFlavour_2 * 1E3) / 1E3), 2);
+        float flavorDrop_2 = Util.rounded((float) (flavorMl_2 / 1.02), 2);
+        float flavorPercent_2 = Util.rounded((float) ((flavorMl_2 / valueAmountToMake * 1E4) / 100), 1);
         liquid.setFlavorName_2(flavorName2);
         liquid.setFlavorMl_2(flavorMl_2);
         liquid.setFlavorGrams_2(flavorDrop_2);
         liquid.setFlavorPercent_2(flavorPercent_2);
 
 
-        float flavorMl_3 = rounded((float) ((valueAmountToMake / 100 * valueFlavour_3 * 1E3) / 1E3), 2);
-        float flavorDrop_3 = rounded((float) (flavorMl_3 / 1.02), 2);
-        float flavorPercent_3 = rounded((float) ((flavorMl_3 / valueAmountToMake * 1E4) / 100), 1);
+        float flavorMl_3 = Util.rounded((float) ((valueAmountToMake / 100 * valueFlavour_3 * 1E3) / 1E3), 2);
+        float flavorDrop_3 = Util.rounded((float) (flavorMl_3 / 1.02), 2);
+        float flavorPercent_3 = Util.rounded((float) ((flavorMl_3 / valueAmountToMake * 1E4) / 100), 1);
         liquid.setFlavorName_3(flavorName3);
         liquid.setFlavorMl_3(flavorMl_3);
         liquid.setFlavorGrams_3(flavorDrop_3);
@@ -272,11 +273,7 @@ public class CreateRecipeFragment extends Fragment {
         });
     }
 
-    private float rounded(float input, int umberOfCharacters) {
-        return new BigDecimal(String.valueOf(input)).setScale(umberOfCharacters, RoundingMode.HALF_UP).floatValue();
-    }
-
-    private float getFloatFromField(TextView textView) {
+       private float getFloatFromField(TextView textView) {
         return Float.valueOf(textView.getText().toString());
     }
 }

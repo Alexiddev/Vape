@@ -37,10 +37,10 @@ public class MainActivity extends ActionBarActivity
         setContentView(R.layout.activity_main);
         manager = this.getSupportFragmentManager();
         context = this;
-//        AdView mAdView = (AdView) findViewById(R.id.adView);
-//        AdRequest adRequest = new AdRequest.Builder()
-//                .build();
-//        mAdView.loadAd(adRequest);
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        mAdView.loadAd(adRequest);
 
         RateThisApp.Config config = new RateThisApp.Config(3, 5);
         RateThisApp.init(config);
@@ -69,6 +69,8 @@ public class MainActivity extends ActionBarActivity
         if (id == R.id.nav_create_new_recipe) {
             fragment = new CreateRecipeFragment();
         } else if (id == R.id.nav_saved) {
+            fragment = new SavedFragment();
+        } else if (id == R.id.nav_voltage) {
             fragment = new OhmsFragment();
         } else if (id == R.id.nav_share) {
             Util.shareApp(context);

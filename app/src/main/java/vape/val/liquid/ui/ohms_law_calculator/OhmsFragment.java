@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import vape.val.liquid.R;
+import vape.val.liquid.util.Util;
 
 
 /**
@@ -33,8 +34,7 @@ public class OhmsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-       return ohmsFragmentView = inflater.inflate(R.layout.law_fragment, container, false);
+        return ohmsFragmentView = inflater.inflate(R.layout.law_fragment, container, false);
     }
 
 
@@ -43,10 +43,9 @@ public class OhmsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         init(ohmsFragmentView);
         calculate.setOnClickListener(view -> vapeCalculator());
-
     }
 
-    private void init(View view){
+    private void init(View view) {
 
         ohms_text = (EditText) view.findViewById(R.id.edit_omhs);
         amps_text = (EditText) view.findViewById(R.id.edit_amps);
@@ -55,21 +54,38 @@ public class OhmsFragment extends Fragment {
         calculate = (Button) view.findViewById(R.id.calculate);
     }
 
-    private void vapeCalculator(){
+    private void vapeCalculator() {
+
+        volts = getFloat(volts, vplts_text);
+        amps = getFloat(amps, amps_text);
+        watts = getFloat(watts, watts_text);
+        ohms = getFloat(ohms, ohms_text);
 
 
-      volts = getFloat(volts, vplts_text);
-      amps = getFloat(amps, amps_text);
-      watts =  getFloat(watts, watts_text);
-      ohms = getFloat(ohms, ohms_text);
-
-
-      if (volts > 0 && ohms > 0) { amps =volts/ohms; watts=volts*amps;}
-      if (volts > 0 && amps > 0) {ohms =volts/amps; watts =volts*amps;}
-      if (volts > 0 && watts > 0){amps =watts/volts; ohms=volts/amps;}
-      if (ohms > 0 && amps > 0)  { volts =amps*ohms; watts=amps*amps*ohms;}
-      if (amps > 0 && watts > 0) { volts =watts/amps; ohms=volts/amps;}
-      if (ohms > 0 && watts > 0) { amps= (float) Math.sqrt((watts/ohms)); volts=amps*ohms;}
+        if (volts > 0 && ohms > 0) {
+            amps = volts / ohms;
+            watts = volts * amps;
+        }
+        if (volts > 0 && amps > 0) {
+            ohms = volts / amps;
+            watts = volts * amps;
+        }
+        if (volts > 0 && watts > 0) {
+            amps = watts / volts;
+            ohms = volts / amps;
+        }
+        if (ohms > 0 && amps > 0) {
+            volts = amps * ohms;
+            watts = amps * amps * ohms;
+        }
+        if (amps > 0 && watts > 0) {
+            volts = watts / amps;
+            ohms = volts / amps;
+        }
+        if (ohms > 0 && watts > 0) {
+            amps = (float) Math.sqrt((watts / ohms));
+            volts = amps * ohms;
+        }
 
         ohms_text.setText(Float.toString(ohms));
         amps_text.setText(Float.toString(amps));
@@ -78,12 +94,13 @@ public class OhmsFragment extends Fragment {
 
     }
 
-    private float getFloat(float f, EditText view){
+    private float getFloat(float f, EditText view) {
         try {
-         return f = Float.parseFloat(String.valueOf(view.getText()));
-        }catch (NumberFormatException e){
-            return f = 0.0f;
+            f = Float.parseFloat(String.valueOf(view.getText()));
+        } catch (NumberFormatException e) {
+            f = 0.0f;
         }
+        return Util.rounded(f, 4);
     }
 }
 

@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import vape.val.liquid.R;
 import vape.val.liquid.database.SQLiteHelper;
 import vape.val.liquid.model.Liquid;
@@ -37,6 +40,10 @@ public class Util {
         sharingIntent.setType("text/plain");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "The best E-Cigarette liquid recipe calculator! https://play.google.com/store/apps/details?id=vape.val.liquid");
         context.startActivity(Intent.createChooser(sharingIntent, context.getString(R.string.share)));
+    }
+
+    public static float rounded(float input, int umberOfCharacters) {
+        return new BigDecimal(String.valueOf(input)).setScale(umberOfCharacters, RoundingMode.HALF_UP).floatValue();
     }
 
 

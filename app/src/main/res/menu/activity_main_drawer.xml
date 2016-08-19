@@ -10,6 +10,10 @@
             android:id="@+id/nav_saved"
             android:icon="@drawable/ic_invert_colors_black_24dp"
             android:title="@string/my_recipes" />
+        <item
+            android:id="@+id/nav_voltage"
+            android:icon="@drawable/voltage"
+            android:title="@string/ohms_law_calculator" />
     </group>
 
     <item android:title="Communicate">
