@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vape.val.liquid.util.RadioButtonWithTableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_gravity="center">
+
+    <TableRow android:id="@+id/tablerow_spirals">
+
+        <com.rey.material.widget.RadioButton
+            style="@style/Material.Drawable.RadioButton"
+            android:id="@+id/radio_wire_1"
+            android:layout_weight="1"
+            android:text="1" />
+
+        <com.rey.material.widget.RadioButton
+            style="@style/Material.Drawable.RadioButton"
+            android:id="@+id/radio_wire_2"
+            android:layout_weight="1"
+            android:text="2" />
+        <com.rey.material.widget.RadioButton
+            style="@style/Material.Drawable.RadioButton"
+            android:id="@+id/radio_wire_3"
+            android:layout_weight="1"
+            android:text="3" />
+        <com.rey.material.widget.RadioButton
+            style="@style/Material.Drawable.RadioButton"
+            android:id="@+id/radio_wire_4"
+            android:layout_weight="1"
+            android:text="4" />
+    </TableRow>
+
+
+</vape.val.liquid.util.RadioButtonWithTableLayout>

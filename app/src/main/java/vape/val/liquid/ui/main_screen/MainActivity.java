@@ -16,6 +16,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import vape.val.liquid.R;
+import vape.val.liquid.ui.coil_calculator.CoilCalculatorFragment;
 import vape.val.liquid.ui.ohms_law_calculator.OhmsFragment;
 import vape.val.liquid.ui.recipe.main_recipe.CreateRecipeFragment;
 import vape.val.liquid.ui.recipe.main_recipe.SavedFragment;
@@ -37,10 +38,10 @@ public class MainActivity extends ActionBarActivity
         setContentView(R.layout.activity_main);
         manager = this.getSupportFragmentManager();
         context = this;
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        mAdView.loadAd(adRequest);
+//        AdView mAdView = (AdView) findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .build();
+//        mAdView.loadAd(adRequest);
 
         RateThisApp.Config config = new RateThisApp.Config(3, 5);
         RateThisApp.init(config);
@@ -71,7 +72,7 @@ public class MainActivity extends ActionBarActivity
         } else if (id == R.id.nav_saved) {
             fragment = new SavedFragment();
         } else if (id == R.id.nav_voltage) {
-            fragment = new OhmsFragment();
+            fragment = new CoilCalculatorFragment();
         } else if (id == R.id.nav_share) {
             Util.shareApp(context);
         }
