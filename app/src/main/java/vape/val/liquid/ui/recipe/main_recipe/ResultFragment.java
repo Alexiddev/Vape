@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import io.github.yavski.fabspeeddial.FabSpeedDial;
 import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 import vape.val.liquid.R;
-import vape.val.liquid.model.Liquid;
+import vape.val.liquid.model.liquid.Liquid;
 import vape.val.liquid.ui.recipe.base.BaseFragment;
 import vape.val.liquid.util.Util;
 

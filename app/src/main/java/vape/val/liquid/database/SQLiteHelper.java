@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
-import vape.val.liquid.model.Liquid;
+import vape.val.liquid.model.liquid.Liquid;
 
 /**
  * Created by v.aleksandrenko on 02.08.2016.

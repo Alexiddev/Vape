@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import vape.val.liquid.R;
-import vape.val.liquid.model.Liquid;
+import vape.val.liquid.model.liquid.Liquid;
 
 /**
  * Created by alexiddev on 15.08.16.

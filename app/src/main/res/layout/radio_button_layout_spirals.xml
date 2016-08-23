@@ -8,7 +8,8 @@
 
         <com.rey.material.widget.RadioButton
             style="@style/Material.Drawable.RadioButton"
-            android:id="@+id/radio_wire_1"
+            android:id="@+id/radio_1"
+            android:checked="true"
             android:layout_weight="1"
             android:text="1" />
 

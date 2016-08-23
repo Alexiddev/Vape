@@ -1,4 +1,4 @@
-package vape.val.liquid.model;
+package vape.val.liquid.model.liquid;
 
 import android.os.Parcel;
 import android.os.Parcelable;

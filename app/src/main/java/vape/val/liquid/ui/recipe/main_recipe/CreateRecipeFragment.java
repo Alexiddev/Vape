@@ -14,12 +14,8 @@ import android.widget.TextView;
 
 import com.rey.material.widget.Slider;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 import vape.val.liquid.R;
-import vape.val.liquid.model.Liquid;
-import vape.val.liquid.util.RateThisApp;
+import vape.val.liquid.model.liquid.Liquid;
 import vape.val.liquid.util.Util;
 
 public class CreateRecipeFragment extends Fragment {

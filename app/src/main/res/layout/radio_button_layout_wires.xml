@@ -6,7 +6,8 @@
     <TableRow android:id="@+id/tablerow_wires">
 
         <com.rey.material.widget.RadioButton
-            android:id="@+id/radio_wire_1"
+            android:id="@+id/radio_1"
+            android:checked="true"
             style="@style/Material.Drawable.RadioButton"
             android:layout_weight="1"
             android:text="1" />

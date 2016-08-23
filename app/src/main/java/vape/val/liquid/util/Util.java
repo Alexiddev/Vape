@@ -9,7 +9,7 @@ import java.math.RoundingMode;
 
 import vape.val.liquid.R;
 import vape.val.liquid.database.SQLiteHelper;
-import vape.val.liquid.model.Liquid;
+import vape.val.liquid.model.liquid.Liquid;
 
 /**
  * Created by v.aleksandrenko on 12.08.2016.

@@ -40,8 +40,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_new_recipe">Create new recipe</string>
     <string name="my_recipes">My recipes</string>
@@ -67,116 +65,10 @@
     <string name="number_of_turns">Number of turns</string>
     <string name="legs_length">Legs length</string>
     <string name="type_wire">Type wire</string>
+    <string name="pigtail">Pigtail</string>
+    <string name="winding">Winding</string>
+    <string name="battery">Battery</string>
 
-    <string-array name="wire_diam">
-        <item>0.10 mm (AWG 38)</item>
-        <item>0.11 mm (AWG 37)</item>
-        <item>0.12 mm (AWG 36)</item>
-        <item>0.14 mm (AWG 35)</item>
-        <item>0.15 mm</item>
-        <item>0.16 mm (AWG 34)</item>
-        <item>0.18 mm (AWG 33)</item>
-        <item>>0.20 mm (AWG 32)</item>
-        <item>0.22 mm (AWG 31)</item>
-        <item>>0.25 mm (AWG 30)</item>
-        <item>0.28 mm (AWG 29)</item>
-        <item>0.30 mm</item>
-        <item>0.32 mm (AWG 28)</item>
-        <item>0.35 mm</item>
-        <item>0.36 mm (AWG 27)</item>
-        <item>0.38 mm</item>
-        <item>0.40 mm (AWG 26)</item>
-        <item>0.45 mm (AWG 25)</item>
-        <item>0.50 mm</item>
-        <item>0.51 mm (AWG 24)</item>
-        <item>0.57 mm (AWG 23)</item>
-        <item>0.60 mm</item>
-        <item>0.63 mm</item>
-        <item>0.64 mm (AWG 22)</item>
-        <item>0.70 mm</item>
-        <item>0.71 mm (AWG 21)</item>
-        <item>0.80 mm</item>
-        <item>0.81 mm (AWG 20)</item>
-        <item>0.90 mm</item>
-        <item>0.91 mm (AWG 19)</item>
-        <item>1.0 mm</item>
-        <item>1.02 mm (AWG 18)</item>
-    </string-array>
-
-    <string-array name="coil_diam">
-        <item>0.5 mm</item>
-        <item>0.6 mm</item>
-        <item>0.7 mm</item>
-        <item>0.8 mm</item>
-        <item>0.9 mm</item>
-        <item>1 mm</item>
-        <item>1.25 mm</item>
-        <item>1.5 mm</item>
-        <item>1.75 mm</item>
-        <item>2 mm</item>
-        <item>2.25 mm</item>
-        <item>2.5 mm</item>
-        <item>2.75 mm</item>
-        <item>3 mm</item>
-        <item>3.5 mm</item>
-        <item>4 mm</item>
-    </string-array>
-
-
-    <string-array name="numbers_off_turns">
-        <item>1</item>
-        <item>1.5</item>
-        <item>2</item>
-        <item>2.5</item>
-        <item>3</item>
-        <item>3.5</item>
-        <item>4</item>
-        <item>4.5</item>
-        <item>5</item>
-        <item>5.5</item>
-        <item>6</item>
-        <item>6.5</item>
-        <item>7</item>
-        <item>7.5</item>
-        <item>8</item>
-        <item>8.5</item>
-        <item>9</item>
-        <item>9.5</item>
-        <item>10</item>
-        <item>10.5</item>
-        <item>11</item>
-        <item>11.5</item>
-        <item>12</item>
-        <item>12.5</item>
-        <item>13</item>
-        <item>13.5</item>
-        <item>14</item>
-        <item>14.5</item>
-        <item>15</item>
-        <item>15.5</item>
-        <item>16</item>
-        <item>16.5</item>
-        <item>17</item>
-        <item>17.5</item>
-        <item>18</item>
-        <item>18.5</item>
-        <item>19</item>
-        <item>19.5</item>
-        <item>20</item>
-    </string-array>
-
-
-    <string-array name="legs_length">
-        <item>2x0 mm</item>
-        <item>2x0.5 mm</item>
-        <item>2x1 mm</item>
-        <item>2x1.5 mm</item>
-        <item>2x2 mm</item>
-        <item>2x2.5 mm</item>
-        <item>2x3 mm</item>
-        <item>2x4 mm</item>
-        <item>2x5 mm</item>
-    </string-array>
 
     <string-array name="type_wire">
         <item>Nickel 200 (Ni)</item>
