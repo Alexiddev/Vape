@@ -68,22 +68,20 @@
     <string name="pigtail">Pigtail</string>
     <string name="winding">Winding</string>
     <string name="battery">Battery</string>
+    <string name="power">Power</string>
+    <string name="recommended_power">Recommended power</string>
+    <string name="resistance">Resistance</string>
+    <string name="length_of_wire">The length of the wire</string>
+    <string name="current">Current</string>
+    <string name="surface_power">Surface power</string>
+    <string name="the_length_of_the_spiral">The length of the spiral</string>
+    <string name="watt">" Watt"</string>
+    <string name="mmx">" mm x"</string>
+    <string name="mm">" mm"</string>
+    <string name="amp">" Amp"</string>
+    <string name="wmm">" W/mm²"</string>
+    <string name="coil_calculator">Coil building calculator</string>
 
-
-    <string-array name="type_wire">
-        <item>Nickel 200 (Ni)</item>
-        <item>NiFe30</item>
-        <item>Dicodes Resist</item>
-        <item>NiFe48</item>
-        <item>Titanium (Ti)</item>
-        <item>SS AISI 316</item>
-        <item>SS AISI 304</item>
-        <item>Nichrome Ni80</item>
-        <item>Nichrome Ni60</item>
-        <item>Kanthal 1.39</item>
-        <item>Kanthal D 1.35</item>
-        <item>Kanthal A1</item>
-    </string-array>
 
     <!--http://e-liquid-recipes.com/create-->
     <!--http://www.danstools.com/javascript-beautify/    -->

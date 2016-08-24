@@ -2,16 +2,15 @@ package vape.val.liquid.util;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
 import com.rey.material.widget.RadioButton;
-import com.rey.material.widget.Switch;
 
 import vape.val.liquid.R;
-import vape.val.liquid.ui.coil_calculator.CoilCalculatorFragment;
+import vape.val.liquid.model.coil.Coil;
+import vape.val.liquid.ui.coil_calculator.coil_fragments.CoilCalculatorFragment;
 
 /**
  * Created by v.aleksandrenko on 22.08.2016.
@@ -22,7 +21,7 @@ public class RadioButtonWithTableLayout extends TableLayout implements
     private RadioButton mBtnCurrentRadio;
     public static int wires = 1;
     public static int spirals = 1;
-    public static int spirals_type = 1;
+    public static int spirals_type = 2;
 
     public RadioButtonWithTableLayout(Context context) {
         super(context);
@@ -50,16 +49,19 @@ public class RadioButtonWithTableLayout extends TableLayout implements
             case R.id.tablerow_wires:
                 CoilCalculatorFragment.pigtailCheck(Integer.parseInt(type));
                 wires = Integer.parseInt(type);
+                CoilCalculatorFragment.der();
                 break;
             case R.id.tablerow_spirals:
                 spirals = Integer.parseInt(type);
+                CoilCalculatorFragment.der();
                 break;
             case R.id.tablerow_type_spirals:
-                if (type.equals("Normal")) type = "1";
-                else if (type.equals("Micro")) type = "2";
+                if (type.equals("Normal")) type = "2";
+                else if (type.equals("Micro")) type = "1";
                 else if (type.equals("Clapton")) type = "3";
                 spirals_type = Integer.parseInt(type);
                 CoilCalculatorFragment.windingCheck(spirals_type);
+                CoilCalculatorFragment.der();
                 break;
         }
         mBtnCurrentRadio = mBtnRadio;

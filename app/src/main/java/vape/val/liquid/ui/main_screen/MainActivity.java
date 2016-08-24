@@ -12,11 +12,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import vape.val.liquid.R;
-import vape.val.liquid.ui.coil_calculator.CoilCalculatorFragment;
+import vape.val.liquid.ui.coil_calculator.coil_fragments.CoilCalculatorFragment;
 import vape.val.liquid.ui.ohms_law_calculator.OhmsFragment;
 import vape.val.liquid.ui.recipe.main_recipe.CreateRecipeFragment;
 import vape.val.liquid.ui.recipe.main_recipe.SavedFragment;
@@ -72,6 +69,8 @@ public class MainActivity extends ActionBarActivity
         } else if (id == R.id.nav_saved) {
             fragment = new SavedFragment();
         } else if (id == R.id.nav_voltage) {
+            fragment = new OhmsFragment();
+        } else if (id == R.id.nav_coil) {
             fragment = new CoilCalculatorFragment();
         } else if (id == R.id.nav_share) {
             Util.shareApp(context);
@@ -82,7 +81,7 @@ public class MainActivity extends ActionBarActivity
             fragmentTransaction = manager.beginTransaction();
             for (int i = 0; i < manager.getBackStackEntryCount(); ++i) manager.popBackStack();
             fragmentTransaction.replace(R.id.headlines_fragment, fragment);
-            fragmentTransaction.addToBackStack(null);
+            //fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             onBackPressed();
         }

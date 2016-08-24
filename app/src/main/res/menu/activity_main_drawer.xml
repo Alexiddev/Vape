@@ -14,6 +14,11 @@
             android:id="@+id/nav_voltage"
             android:icon="@drawable/voltage"
             android:title="@string/ohms_law_calculator" />
+        <item
+            android:id="@+id/nav_coil"
+            android:icon="@drawable/spiral"
+            android:title="@string/coil_calculator" />
+
     </group>
 
     <item android:title="Communicate">

@@ -45,6 +45,9 @@ public class Util {
     public static float rounded(float input, int umberOfCharacters) {
         return new BigDecimal(String.valueOf(input)).setScale(umberOfCharacters, RoundingMode.HALF_UP).floatValue();
     }
+    public static double rounded(double input, int umberOfCharacters) {
+        return new BigDecimal(String.valueOf(input)).setScale(umberOfCharacters, RoundingMode.HALF_UP).doubleValue();
+    }
 
 
 }
