@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
     tools:context=".ui.recipe.main_recipe.ResultFragment">
 
 
@@ -24,25 +24,42 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:orientation="vertical">
 
 
-            <TextView
-                android:id="@+id/textView6"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:text="@string/number_of_wires"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:layout_height="75dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
 
-            <include
-                layout="@layout/radio_button_layout_wires"
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:text="@string/number_of_wires"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <include
+                    android:id="@+id/radio_button_layout_wires"
+                    layout="@layout/radio_button_layout_wires"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp" />
+                android:layout_height="70dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -76,6 +93,7 @@
                     android:focusable="false"
                     android:gravity="center" />
 
+
                 <FrameLayout
                     android:id="@+id/frameLayout"
                     android:layout_width="0dp"
@@ -85,12 +103,19 @@
 
             </RelativeLayout>
 
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="@string/number_of_spirals"
@@ -101,13 +126,21 @@
                 layout="@layout/radio_button_layout_spirals"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="35dp"
                 android:gravity="center" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="@string/spiral_type"
@@ -118,13 +151,21 @@
                 layout="@layout/radio_button_layout_spiral_type"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="35dp"
                 android:gravity="center" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="20dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="@string/diameter_of_wire"
@@ -138,15 +179,23 @@
                 android:layout_height="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="35dp"
                 android:foregroundGravity="center"
                 ads:spn_labelTextSize="40dp"
                 app:rd_style="@style/Material.Drawable.Ripple.Wave" />
 
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="@string/the_diameter_of_the_coil"
@@ -160,15 +209,23 @@
                 android:layout_height="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
                 android:foregroundGravity="center"
+                android:layout_marginTop="35dp"
                 ads:spn_labelTextSize="40dp"
                 app:rd_style="@style/Material.Drawable.Ripple.Wave" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="@string/number_of_turns"
@@ -182,15 +239,23 @@
                 android:layout_height="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="35dp"
                 android:foregroundGravity="center"
                 ads:spn_labelTextSize="40dp"
                 app:rd_style="@style/Material.Drawable.Ripple.Wave" />
 
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="@string/legs_length"
@@ -204,15 +269,23 @@
                 android:layout_height="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="35dp"
                 android:foregroundGravity="center"
                 ads:spn_labelTextSize="40dp"
                 app:rd_style="@style/Material.Drawable.Ripple.Wave" />
 
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="@string/type_wire"
@@ -226,27 +299,33 @@
                 android:layout_height="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="35dp"
                 android:foregroundGravity="center"
                 ads:spn_labelTextSize="40dp"
                 app:rd_style="@style/Material.Drawable.Ripple.Wave" />
 
+            </android.support.v7.widget.CardView>
 
-
-
+            <android.support.v7.widget.CardView
+                android:id="@+id/winding_layout"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp"
+                android:visibility="gone">
 
 
             <LinearLayout
-                android:visibility="gone"
-                android:id="@+id/winding_layout"
-                android:orientation="vertical"
+
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+               >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:fontFamily="sans-serif"
                     android:gravity="center"
                     android:text="@string/winding"
@@ -269,29 +348,38 @@
                     android:id="@+id/winding_type"
                     style="@style/Material.Widget.Spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:foregroundGravity="center"
                     ads:spn_labelTextSize="40dp"
                     app:rd_style="@style/Material.Drawable.Ripple.Wave" />
 
             </LinearLayout>
 
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
+
 
             <com.rey.material.widget.Slider
-                android:layout_marginTop="20dp"
                 android:id="@+id/slider_battery"
                 style="@style/Material.Widget.Slider.Discrete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
                 app:sl_maxValue="8000"
                 app:sl_minValue="3000"
-                app:sl_stepValue="50"
                 app:sl_primaryColor="@color/colorPrimary"
+                app:sl_stepValue="50"
                 app:sl_value="3700" />
 
             <LinearLayout
@@ -303,6 +391,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:paddingLeft="10dp"
                     android:fontFamily="sans-serif"
                     android:gravity="left"
                     android:text="@string/battery"
@@ -324,20 +413,15 @@
 
             </LinearLayout>
 
-            <!--<com.rey.material.widget.Button-->
-                <!--android:id="@+id/button"-->
-                <!--style="@style/Widget.AppCompat.Button.Colored"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="60dp"-->
-                <!--android:layout_alignParentBottom="true"-->
-                <!--android:layout_alignParentEnd="true"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:background="@drawable/press_button"-->
-                <!--android:text="@string/create"-->
-                <!--app:rd_enable="true"-->
-                <!--android:onClick="calculateCoil"/>-->
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
+
 
             <LinearLayout
                 android:id="@+id/coil_result"
@@ -354,6 +438,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:paddingLeft="10dp"
                         android:gravity="left"
                         android:text="@string/power"
                         android:textColor="@color/black"
@@ -381,6 +466,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left"
+                        android:paddingLeft="10dp"
                         android:text="@string/recommended_power"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
@@ -406,6 +492,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left"
+                        android:paddingLeft="10dp"
                         android:text="@string/resistance"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
@@ -432,6 +519,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left"
+                        android:paddingLeft="10dp"
                         android:text="@string/length_of_wire"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
@@ -458,6 +546,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left"
+                        android:paddingLeft="10dp"
                         android:text="@string/current"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
@@ -484,6 +573,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left"
+                        android:paddingLeft="10dp"
                         android:text="@string/surface_power"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
@@ -509,6 +599,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left"
+                        android:paddingLeft="10dp"
                         android:text="@string/the_length_of_the_spiral"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
@@ -525,13 +616,12 @@
                 </LinearLayout>
 
 
-
             </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
 
         </LinearLayout>
-
-
 
 
     </ScrollView>

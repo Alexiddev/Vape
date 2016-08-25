@@ -14,6 +14,11 @@
     tools:context=".ui.recipe.main_recipe.ResultFragment">
 
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:cardElevation="8dp">
+
     <com.rey.material.widget.Spinner
         android:id="@+id/spinner"
         style="@style/Material.Widget.Spinner"
@@ -25,451 +30,535 @@
         ads:spn_labelTextSize="40dp"
         app:rd_style="@style/Material.Drawable.Ripple.Wave" />
 
-    <LinearLayout
-        android:id="@+id/headLayout"
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@+id/spinner"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="2dp"
         android:background="@drawable/layout_border"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView"
+        android:id="@+id/view">
+        <LinearLayout
+            android:id="@+id/headLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/ml"
-            android:textColor="@color/black"
-            android:textSize="25dp" />
+            android:layout_height="40dp"
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/grams"
-            android:textColor="@color/black"
-            android:textSize="25dp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="%"
-            android:textColor="@color/black"
-            android:textSize="25dp" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ml"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/grams"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="%"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
     <ScrollView
         android:id="@+id/scrollView"
+        android:paddingTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/headLayout"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:layout_below="@+id/view">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:orientation="vertical">
 
-            <LinearLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:background="@drawable/layout_border"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="@string/nicotine_juice"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
-
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:layout_height="90dp"
+                    android:background="@drawable/layout_border"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/nicotine_juice_ml"
+                        android:id="@+id/textView4"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="40dp"
                         android:gravity="center"
-                        android:text="0"
+                        android:text="@string/nicotine_juice"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/nicotine_juice_gramm"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/nicotine_juice_per"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/nicotine_juice_ml"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/nicotine_juice_gramm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/nicotine_juice_per"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
+
+
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </android.support.v7.widget.CardView>
 
-            <LinearLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:background="@drawable/layout_border"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/pg_dilutant"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="@string/pg_dilutant"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
-
+                app:cardElevation="8dp"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:layout_height="90dp"
+                    android:background="@drawable/layout_border"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/pg_dilutant_ml"
+                        android:id="@+id/pg_dilutant"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="40dp"
                         android:gravity="center"
-                        android:text="0"
+                        android:text="@string/pg_dilutant"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/pg_dilutant_gramm"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/pg_dilutant_per"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/pg_dilutant_ml"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/pg_dilutant_gramm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/pg_dilutant_per"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </android.support.v7.widget.CardView>
 
-            <LinearLayout
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:background="@drawable/layout_border"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/vg_dilutant"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="@string/vg_dilutant"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
-
+                app:cardElevation="8dp"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:layout_height="90dp"
+                    android:background="@drawable/layout_border"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/vg_dilutant_ml"
+                        android:id="@+id/vg_dilutant"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="40dp"
                         android:gravity="center"
-                        android:text="0"
+                        android:text="@string/vg_dilutant"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/vg_dilutant_gramm"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/vg_dilutant_per"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/vg_dilutant_ml"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/vg_dilutant_gramm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/vg_dilutant_per"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </android.support.v7.widget.CardView>
 
-            <LinearLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:background="@drawable/layout_border"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/water"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="@string/water_vodka_pga_str"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
-
+                app:cardElevation="8dp"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:layout_height="90dp"
+                    android:background="@drawable/layout_border"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/wvg_ml"
+                        android:id="@+id/water"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="40dp"
                         android:gravity="center"
-                        android:text="0"
+                        android:text="@string/water_vodka_pga_str"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/wvg_gramm"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/wvg_per"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/wvg_ml"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/wvg_gramm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/wvg_per"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </android.support.v7.widget.CardView>
 
-
-            <LinearLayout
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
                 android:id="@+id/layout_aroma_1"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:background="@drawable/layout_border"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/aroma_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="@string/flavor_1"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
+                android:visibility="gone"
+                app:cardElevation="8dp"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="8dp">
 
 
                 <LinearLayout
+
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:layout_height="90dp"
+                    android:background="@drawable/layout_border"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/flavor_1_ml"
+                        android:id="@+id/aroma_1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="40dp"
                         android:gravity="center"
-                        android:text="0"
+                        android:text="@string/flavor_1"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/flavor_1_gramm"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/flavor_1_per"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/flavor_1_ml"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/flavor_1_gramm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/flavor_1_per"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </android.support.v7.widget.CardView>
 
-            <LinearLayout
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
                 android:id="@+id/layout_aroma_2"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:background="@drawable/layout_border"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/aroma_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="@string/flavor_2"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
-
+                android:visibility="gone"
+                app:cardElevation="8dp"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="8dp">
 
                 <LinearLayout
+
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:layout_height="90dp"
+                    android:background="@drawable/layout_border"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/flavor_2_ml"
+                        android:id="@+id/aroma_2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="40dp"
                         android:gravity="center"
-                        android:text="0"
+                        android:text="@string/flavor_2"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/flavor_2_gramm"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/flavor_2_per"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/flavor_2_ml"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/flavor_2_gramm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/flavor_2_per"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </android.support.v7.widget.CardView>
 
-            <LinearLayout
+            <android.support.v7.widget.CardView
                 android:id="@+id/layout_aroma_3"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:background="@drawable/layout_border"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/aroma_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="@string/flavor_3"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
-
+                android:visibility="gone"
+                app:cardElevation="8dp"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="8dp">
 
                 <LinearLayout
+
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:layout_height="90dp"
+                    android:background="@drawable/layout_border"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/flavor_3_ml"
+                        android:id="@+id/aroma_3"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="40dp"
                         android:gravity="center"
-                        android:text="0"
+                        android:text="@string/flavor_3"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/flavor_3_gramm"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/flavor_3_per"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/flavor_3_ml"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/flavor_3_gramm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/flavor_3_per"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
+            </android.support.v7.widget.CardView>
 
-            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>

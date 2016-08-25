@@ -44,11 +44,11 @@ public class CreateRecipeFragment extends Fragment {
 
     Button addFlavour;
     Button create;
-    LinearLayout flavorLayout_1;
+    android.support.v7.widget.CardView flavorLayout_1;
     com.rey.material.widget.Slider flavor_slider_1;
-    LinearLayout flavorLayout_2;
+    android.support.v7.widget.CardView flavorLayout_2;
     com.rey.material.widget.Slider flavor_slider_2;
-    LinearLayout flavorLayout_3;
+    android.support.v7.widget.CardView flavorLayout_3;
     com.rey.material.widget.Slider flavor_slider_3;
 
     TextView water_vodka_pga;
@@ -95,15 +95,12 @@ public class CreateRecipeFragment extends Fragment {
             switch (count_flavor) {
                 case 1:
                     flavorLayout_1.setVisibility(View.VISIBLE);
-                    flavor_slider_1.setVisibility(View.VISIBLE);
                     break;
                 case 2:
                     flavorLayout_2.setVisibility(View.VISIBLE);
-                    flavor_slider_2.setVisibility(View.VISIBLE);
                     break;
                 case 3:
                     flavorLayout_3.setVisibility(View.VISIBLE);
-                    flavor_slider_3.setVisibility(View.VISIBLE);
                     addFlavour.setVisibility(View.GONE);
                     break;
                 default:
@@ -236,11 +233,11 @@ public class CreateRecipeFragment extends Fragment {
         slider_add_flavor_3 = (Slider) createRecipeFragment.findViewById(R.id.slider_add_flavor_3);
 
         addFlavour = (Button) createRecipeFragment.findViewById(R.id.add_flavor);
-        flavorLayout_1 = (LinearLayout) createRecipeFragment.findViewById(R.id.add_flavor_layout_1);
+        flavorLayout_1 = (android.support.v7.widget.CardView) createRecipeFragment.findViewById(R.id.first_flavor_card);
         flavor_slider_1 = (Slider) createRecipeFragment.findViewById(R.id.slider_add_flavor_1);
-        flavorLayout_2 = (LinearLayout) createRecipeFragment.findViewById(R.id.add_flavor_layout_2);
+        flavorLayout_2 = (android.support.v7.widget.CardView) createRecipeFragment.findViewById(R.id.second_flavor_card);
         flavor_slider_2 = (Slider) createRecipeFragment.findViewById(R.id.slider_add_flavor_2);
-        flavorLayout_3 = (LinearLayout) createRecipeFragment.findViewById(R.id.add_flavor_layout_3);
+        flavorLayout_3 = (android.support.v7.widget.CardView) createRecipeFragment.findViewById(R.id.third_flavor_card);
         flavor_slider_3 = (Slider) createRecipeFragment.findViewById(R.id.slider_add_flavor_3);
 
         flavourNameEditText_1 = (EditText) createRecipeFragment.findViewById(R.id.name_add_flavor_1);

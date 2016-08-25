@@ -12,6 +12,9 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import vape.val.liquid.R;
 import vape.val.liquid.ui.coil_calculator.coil_fragments.CoilCalculatorFragment;
 import vape.val.liquid.ui.ohms_law_calculator.OhmsFragment;
@@ -35,10 +38,10 @@ public class MainActivity extends ActionBarActivity
         setContentView(R.layout.activity_main);
         manager = this.getSupportFragmentManager();
         context = this;
-//        AdView mAdView = (AdView) findViewById(R.id.adView);
-//        AdRequest adRequest = new AdRequest.Builder()
-//                .build();
-//        mAdView.loadAd(adRequest);
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        mAdView.loadAd(adRequest);
 
         RateThisApp.Config config = new RateThisApp.Config(3, 5);
         RateThisApp.init(config);

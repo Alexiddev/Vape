@@ -44,9 +44,9 @@ public class BaseFragment extends Fragment {
     TextView flavorPercent_3;
     TextView flavorName_3;
 
-    LinearLayout flavorLayout_1;
-    LinearLayout flavorLayout_2;
-    LinearLayout flavorLayout_3;
+    android.support.v7.widget.CardView flavorLayout_1;
+    android.support.v7.widget.CardView flavorLayout_2;
+    android.support.v7.widget.CardView flavorLayout_3;
 
     public void setValue(Liquid liquid) {
         setValueFromLiquid(nicotineJuiceMl, liquid.getNicotineJuiceMl());
@@ -120,9 +120,9 @@ public class BaseFragment extends Fragment {
         flavorGrams_3 = (TextView) view.findViewById(R.id.flavor_3_gramm);
         flavorPercent_3 = (TextView) view.findViewById(R.id.flavor_3_per);
         flavorName_3 = (TextView) view.findViewById(R.id.aroma_3);
-        flavorLayout_1 = (LinearLayout) view.findViewById(R.id.layout_aroma_1);
-        flavorLayout_2 = (LinearLayout) view.findViewById(R.id.layout_aroma_2);
-        flavorLayout_3 = (LinearLayout) view.findViewById(R.id.layout_aroma_3);
+        flavorLayout_1 = (android.support.v7.widget.CardView) view.findViewById(R.id.layout_aroma_1);
+        flavorLayout_2 = (android.support.v7.widget.CardView) view.findViewById(R.id.layout_aroma_2);
+        flavorLayout_3 = (android.support.v7.widget.CardView) view.findViewById(R.id.layout_aroma_3);
     }
 
 }

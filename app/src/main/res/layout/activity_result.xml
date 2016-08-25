@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/smoke_cloud"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -14,11 +13,18 @@
     tools:context=".ui.recipe.main_recipe.ResultFragment">
 
 
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="2dp"
+        android:id="@+id/view">
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/layout_border"
         android:orientation="horizontal">
 
         <TextView
@@ -53,17 +59,27 @@
 
     </LinearLayout>
 
+    </android.support.v7.widget.CardView>
+
     <ScrollView
         android:id="@+id/scrollView"
+        android:paddingTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:layout_below="@+id/view">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -118,7 +134,18 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
+
+
+        </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                app:cardElevation="8dp"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -175,6 +202,17 @@
 
             </LinearLayout>
 
+            </android.support.v7.widget.CardView>
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            app:cardElevation="8dp"
+            android:layout_marginTop="15dp"
+            app:cardCornerRadius="8dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
@@ -229,6 +267,15 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                app:cardElevation="8dp"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -285,14 +332,24 @@
 
             </LinearLayout>
 
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:id="@+id/layout_aroma_1"
+                android:visibility="gone"
+                app:cardElevation="8dp"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="8dp">
+
 
             <LinearLayout
-                android:id="@+id/layout_aroma_1"
+
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:background="@drawable/layout_border"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/aroma_1"
@@ -343,13 +400,23 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
                 android:id="@+id/layout_aroma_2"
+                android:visibility="gone"
+                app:cardElevation="8dp"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="8dp">
+
+            <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:background="@drawable/layout_border"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/aroma_2"
@@ -400,13 +467,23 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:id="@+id/layout_aroma_3"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
+                android:visibility="gone"
+                app:cardElevation="8dp"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="8dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
                 android:background="@drawable/layout_border"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/aroma_3"
@@ -457,6 +534,10 @@
 
 
             </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
         </LinearLayout>
 
     </ScrollView>
