@@ -18,6 +18,10 @@
             android:id="@+id/nav_coil"
             android:icon="@drawable/spiral"
             android:title="@string/coil_calculator" />
+        <item
+            android:id="@+id/nav_my_coil"
+            android:icon="@drawable/galaxy_spiral_shape"
+            android:title="@string/my_coils" />
 
     </group>
 

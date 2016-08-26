@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import vape.val.liquid.R;
-import vape.val.liquid.database.SQLiteHelper;
+import vape.val.liquid.model.coil.Coil;
 import vape.val.liquid.model.liquid.Liquid;
 
 /**
@@ -16,11 +16,7 @@ import vape.val.liquid.model.liquid.Liquid;
  */
 public class Util {
 
-    public static void save(Liquid liquid, Context context) {
-        SQLiteHelper sQLiteHelper = new SQLiteHelper(context);
-        sQLiteHelper.insertLiquid(liquid);
-        Toast.makeText(context, "Saved", Toast.LENGTH_LONG).show();
-    }
+
 
     public static void share(Liquid liquid, Context context) {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
@@ -29,11 +25,13 @@ public class Util {
         context.startActivity(Intent.createChooser(sharingIntent, context.getString(R.string.share)));
     }
 
-    public static void delete(Liquid liquid, Context context) {
-        SQLiteHelper sQLiteHelper = new SQLiteHelper(context);
-        sQLiteHelper.deleteLiquid(liquid);
-        Toast.makeText(context, "Deleted", Toast.LENGTH_LONG).show();
+    public static void share(Coil coil, Context context) {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, coil.forShareString());
+        context.startActivity(Intent.createChooser(sharingIntent, context.getString(R.string.share)));
     }
+
 
     public static void shareApp(Context context) {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);

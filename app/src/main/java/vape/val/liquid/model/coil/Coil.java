@@ -3,31 +3,98 @@ package vape.val.liquid.model.coil;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Created by alexiddev on 24.08.16.
  */
+
+@DatabaseTable(tableName = "coil")
 public class Coil implements Parcelable {
 
+    public static final String NAME = "name";
+    public static final String NUMBER_OF_WIRES = "number_of_wires";
+    public static final String PIGTAIL_COLUMN = "pigtail_column";
+    public static final String NUMBER_OFS_PIRALS = "number_ofs_pirals";
+    public static final String SPIRAL_TYPE = "spiral_type";
+    public static final String DIAMETER_OF_SPIRALS = "diameter_of_spirals";
+    public static final String DIAMETER_OF_COILS = "diameter_of_coils";
+    public static final String NUMBER_OF_TURNS = "number_of_turns";
+    public static final String LEGS_LENGTH = "legs_length";
+    public static final String TYPE_WIRE = "type_wire";
+    public static final String WINDING_DIAM = "winding_diam";
+    public static final String WINDING_TYPE = "winding_type";
+    public static final String BATTERY_COLUMN = "battery_column";
+    public static final String POWER_COLUMN = "power_column";
+    public static final String RECOMMENDED_POWER = "recommended_power";
+    public static final String RESISTANCE_COLUMN = "resistance_column";
+    public static final String LENGTH_OF_WIRE = "length_of_wire";
+    public static final String CURRENT_COLUMN = "current_column";
+    public static final String SURFACE_POWER = "surface_power";
+    public static final String LENGTH_OF_SPIRAL = "length_of_spiral";
+
+
+    @DatabaseField(columnName = NAME)
+    private String name;
+
+    @DatabaseField(columnName = NUMBER_OF_WIRES)
     private double numberOfWires;
+
+    @DatabaseField(columnName = PIGTAIL_COLUMN)
     private double pigtail;
+
+    @DatabaseField(columnName = NUMBER_OFS_PIRALS)
     private double numberOfSpirals;
+
+    @DatabaseField(columnName = SPIRAL_TYPE)
     private String spiralType;
+
+    @DatabaseField(columnName = DIAMETER_OF_SPIRALS)
     private String diameterOfSpirals;
+
+    @DatabaseField(columnName = DIAMETER_OF_COILS)
     private String diameterOfCoils;
+
+    @DatabaseField(columnName = NUMBER_OF_TURNS)
     private double numberOfTurns;
+
+    @DatabaseField(columnName = LEGS_LENGTH)
     private String legsLength;
+
+    @DatabaseField(columnName = TYPE_WIRE)
     private String typeWire;
+
+    @DatabaseField(columnName = WINDING_DIAM)
     private String windingDiam;
+
+    @DatabaseField(columnName = WINDING_TYPE)
     private String windingType;
+
+    @DatabaseField(columnName = BATTERY_COLUMN)
     private double battery;
 
+    @DatabaseField(columnName = POWER_COLUMN)
     private double power;
+
+    @DatabaseField(columnName = RECOMMENDED_POWER)
     private double recommendedPower;
+
+    @DatabaseField(columnName = RESISTANCE_COLUMN)
     private double resistance;
+
+    @DatabaseField(columnName = LENGTH_OF_WIRE)
     private double lengthOfWire;
+
+    @DatabaseField(columnName = CURRENT_COLUMN)
     private double current;
+
+    @DatabaseField(columnName = SURFACE_POWER)
     private double surfacePower;
+
+    @DatabaseField(columnName = LENGTH_OF_SPIRAL)
     private double lengthOfSpiral;
+
 
     public Coil() {
     }
@@ -57,6 +124,14 @@ public class Coil implements Parcelable {
         this.current = current;
         this.surfacePower = surfacePower;
         this.lengthOfSpiral = lengthOfSpiral;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getNumberOfWires() {
@@ -211,31 +286,6 @@ public class Coil implements Parcelable {
         this.lengthOfSpiral = lengthOfSpiral;
     }
 
-    @Override
-    public String toString() {
-        return "Coil{" +
-                "numberOfWires=" + numberOfWires +
-                ", pigtail=" + pigtail +
-                ", numberOfSpirals=" + numberOfSpirals +
-                ", spiralType='" + spiralType + '\'' +
-                ", diameterOfSpirals='" + diameterOfSpirals + '\'' +
-                ", diameterOfCoils='" + diameterOfCoils + '\'' +
-                ", numberOfTurns=" + numberOfTurns +
-                ", legsLength='" + legsLength + '\'' +
-                ", typeWire='" + typeWire + '\'' +
-                ", windingDiam='" + windingDiam + '\'' +
-                ", windingType='" + windingType + '\'' +
-                ", battery=" + battery +
-                ", power=" + power +
-                ", recommendedPower=" + recommendedPower +
-                ", resistance=" + resistance +
-                ", lengthOfWire=" + lengthOfWire +
-                ", current=" + current +
-                ", surfacePower=" + surfacePower +
-                ", lengthOfSpiral=" + lengthOfSpiral +
-                '}';
-    }
-
 
     @Override
     public int describeContents() {
@@ -298,5 +348,43 @@ public class Coil implements Parcelable {
         current = in.readDouble();
         surfacePower = in.readDouble();
         lengthOfSpiral = in.readDouble();
+    }
+
+    @Override
+    public String toString() {
+        return  name;
+    }
+
+
+
+
+    public String forShareString() {
+        String forShare =  "Coil (" +
+                "name " + name +
+                ", numberOfWires " + numberOfWires +
+                ", pigtail=" + pigtail +
+                ", numberOfSpirals=" + numberOfSpirals +
+                ", spiralType " + spiralType +
+                ", diameterOfSpirals "  + diameterOfSpirals +
+                ", diameterOfCoils " + diameterOfCoils +
+                ", numberOfTurns " + numberOfTurns +
+                ", legsLength " + legsLength +
+                ", typeWire " + typeWire +
+                ", battery " + battery +
+                ", power " + power +
+                ", recommendedPower " + recommendedPower +
+                ", resistance " + resistance +
+                ", lengthOfWire " + lengthOfWire +
+                ", current " + current +
+                ", surfacePower " + surfacePower +
+                ", lengthOfSpiral " + lengthOfSpiral;
+
+        if (spiralType.equals("Clapton")){
+            forShare +=  ", Winding (windingDiam " + windingDiam +
+                    ", windingType " + windingType  + ')';
+        }
+
+        forShare += "  https://play.google.com/store/apps/details?id=vape.val.liquid";
+        return forShare;
     }
 }

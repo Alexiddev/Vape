@@ -3,41 +3,99 @@ package vape.val.liquid.model.liquid;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Created by v.aleksandrenko on 01.08.2016.
  */
+
+@DatabaseTable(tableName = "FAVLIQUID")
 public class Liquid implements Parcelable {
 
+    public static final String NAME = "NAME";
+    public static final String NICOTINE_JUICE_ML = "NICOTINE_JUICE_ML";
+    public static final String NICOTINE_JUICE_GRAMS = "NICOTINE_JUICE_GRAMS";
+    public static final String NICOTINE_JUICE_PERCENT = "NICOTINE_JUICE_PERCENT";
+    public static final String PROPYLENEGLYCOL_ML = "PROPYLENEGLYCOL_ML";
+    public static final String PROPYLENEGLYCOL_GRAMS = "PROPYLENEGLYCOL_GRAMS";
+    public static final String PROPYLENEGLYCOL_PERCENT = "PROPYLENEGLYCOL_PERCENT";
+    public static final String VEGETABLEGLYCERIN_ML = "VEGETABLEGLYCERIN_ML";
+    public static final String VEGETABLEGLYCERIN_GRAMS = "VEGETABLEGLYCERIN_GRAMS";
+    public static final String VEGETABLEGLYCERIN_PERCENT = "VEGETABLEGLYCERIN_PERCENT";
+    public static final String WATER_ML = "WATER_ML";
+    public static final String WATER_GRAMS = "WATER_GRAMS";
+    public static final String WATER_PERCENT = "WATER_PERCENT";
+    public static final String FLAVOR_ML_1 = "FLAVOR_ML_1";
+    public static final String FLAVOR_GRAMS_1 = "FLAVOR_GRAMS_1";
+    public static final String FLAVOR_PERCENT_1 = "FLAVOR_PERCENT_1";
+    public static final String FLAVOR_NAME_1 = "FLAVOR_NAME_1";
+    public static final String FLAVOR_ML_2 = "FLAVOR_ML_2";
+    public static final String FLAVOR_GRAMS_2 = "FLAVOR_GRAMS_2";
+    public static final String FLAVOR_PERCENT_2 = "FLAVOR_PERCENT_2";
+    public static final String FLAVOR_NAME_2 = "FLAVOR_NAME_2";
+    public static final String FLAVOR_ML_3 = "FLAVOR_ML_3";
+    public static final String FLAVOR_GRAMS_3 = "FLAVOR_GRAMS_3";
+    public static final String FLAVOR_PERCENT_3 = "FLAVOR_PERCENT_3";
+    public static final String FLAVOR_NAME_3 = "FLAVOR_NAME_3";
+
+
+    @DatabaseField(columnName = NAME)
     private String name;
+
+    @DatabaseField(columnName = NICOTINE_JUICE_ML)
     private float nicotineJuiceMl;
+    @DatabaseField(columnName = NICOTINE_JUICE_GRAMS)
     private float nicotineJuiceGrams;
+    @DatabaseField(columnName = NICOTINE_JUICE_PERCENT)
     private float nicotineJuicePercent;
 
+    @DatabaseField(columnName = PROPYLENEGLYCOL_ML)
     private float propyleneGlycolMl;
+    @DatabaseField(columnName = PROPYLENEGLYCOL_GRAMS)
     private float propyleneGlycolGrams;
+    @DatabaseField(columnName = PROPYLENEGLYCOL_PERCENT)
     private float propyleneGlycolPercent;
 
+    @DatabaseField(columnName = VEGETABLEGLYCERIN_ML)
     private float vegetableGlycerinMl;
+    @DatabaseField(columnName = VEGETABLEGLYCERIN_GRAMS)
     private float vegetableGlycerinGrams;
+    @DatabaseField(columnName = VEGETABLEGLYCERIN_PERCENT)
     private float vegetableGlycerinPercent;
 
+    @DatabaseField(columnName = WATER_ML)
     private float waterMl;
+    @DatabaseField(columnName = WATER_GRAMS)
     private float waterGrams;
+    @DatabaseField(columnName = WATER_PERCENT)
     private float waterPercent;
 
+    @DatabaseField(columnName = FLAVOR_ML_1)
     private float flavorMl_1;
+    @DatabaseField(columnName = FLAVOR_GRAMS_1)
     private float flavorGrams_1;
+    @DatabaseField(columnName = FLAVOR_PERCENT_1)
     private float flavorPercent_1;
+    @DatabaseField(columnName = FLAVOR_NAME_1)
     private String flavorName_1;
 
+    @DatabaseField(columnName = FLAVOR_ML_2)
     private float flavorMl_2;
+    @DatabaseField(columnName = FLAVOR_GRAMS_2)
     private float flavorGrams_2;
+    @DatabaseField(columnName = FLAVOR_PERCENT_2)
     private float flavorPercent_2;
+    @DatabaseField(columnName = FLAVOR_NAME_2)
     private String flavorName_2;
 
+    @DatabaseField(columnName = FLAVOR_ML_3)
     private float flavorMl_3;
+    @DatabaseField(columnName = FLAVOR_GRAMS_3)
     private float flavorGrams_3;
+    @DatabaseField(columnName = FLAVOR_PERCENT_3)
     private float flavorPercent_3;
+    @DatabaseField(columnName = FLAVOR_NAME_3)
     private String flavorName_3;
 
     public Liquid() {

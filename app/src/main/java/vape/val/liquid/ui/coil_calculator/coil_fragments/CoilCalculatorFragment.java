@@ -3,24 +3,32 @@ package vape.val.liquid.ui.coil_calculator.coil_fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.rey.material.widget.RadioButton;
 import com.rey.material.widget.Slider;
 import com.rey.material.widget.Spinner;
 import com.rey.material.widget.Switch;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import io.github.yavski.fabspeeddial.FabSpeedDial;
+import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 import vape.val.liquid.R;
+import vape.val.liquid.database.HelperFactory;
 import vape.val.liquid.model.coil.Coil;
 import vape.val.liquid.model.coil.CoilDiam;
 import vape.val.liquid.model.coil.LegsLength;
@@ -36,6 +44,8 @@ import vape.val.liquid.util.Util;
  */
 public class CoilCalculatorFragment extends Fragment implements View.OnClickListener {
 
+
+    EditText inputName;
     View coilFragmentView;
     com.rey.material.widget.Spinner spinnerWireDiam;
     com.rey.material.widget.Spinner spinnerCoilDiam;
@@ -64,6 +74,9 @@ public class CoilCalculatorFragment extends Fragment implements View.OnClickList
     TextView surfacePower;
     TextView lengthSpiral;
     TableRow wiresTable;
+    FabSpeedDial fabSpeedDial;
+
+    Coil coil;
 
     private RadioButton mBtnCurrentWireRadio;
     private RadioButton mBtnCurrentSpiralRadio;
@@ -78,6 +91,8 @@ public class CoilCalculatorFragment extends Fragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         coilFragmentView = inflater.inflate(R.layout.coil_fragment, container, false);
+
+
         return coilFragmentView;
     }
 
@@ -87,10 +102,18 @@ public class CoilCalculatorFragment extends Fragment implements View.OnClickList
         super.onActivityCreated(savedInstanceState);
         init(coilFragmentView);
         battery_slider.setOnPositionChangeListener((view1, fromUser, oldPos, newPos, oldValue, newValue) -> {
-            String batteryValue = (float) newValue/1000 + " v";
+            String batteryValue = (float) newValue / 1000 + " v";
             battery_value.setText(batteryValue);
             calculateCoil();
             switchPigtail.setOnClickListener(view -> calculateCoil());
+        });
+
+        fabSpeedDial.setMenuListener(new SimpleMenuListenerAdapter() {
+            @Override
+            public boolean onMenuItemSelected(MenuItem menuItem) {
+                inputName(menuItem.getItemId());
+                return false;
+            }
         });
 
         calculateCoil();
@@ -98,12 +121,12 @@ public class CoilCalculatorFragment extends Fragment implements View.OnClickList
 
     public void calculateCoil() {
 
-        Coil coil = new Coil();
+        coil = new Coil();
 
         double numberOfWires = wires;
         coil.setNumberOfWires(numberOfWires);
 
-        double pigtail = switchPigtail.isChecked() ? 1.0: 0.0;
+        double pigtail = switchPigtail.isChecked() ? 1.0 : 0.0;
         coil.setPigtail(pigtail);
 
         double numberOfSpirals = spirals;
@@ -146,45 +169,50 @@ public class CoilCalculatorFragment extends Fragment implements View.OnClickList
 
 
         double rdArea = pi * (Math.pow((wireDiam / 2), 2));
-        double avDiam = wireDiam+coilDiam;
-        double wireLength = (Math.sqrt(Math.pow((pi*avDiam), 2) +
-                Math.pow(wireDiam*numberOfWires*spiralsType, 2) )) * turns + (legsLength*2);
+        double avDiam = wireDiam + coilDiam;
+        double wireLength = (Math.sqrt(Math.pow((pi * avDiam), 2) +
+                Math.pow(wireDiam * numberOfWires * spiralsType, 2))) * turns + (legsLength * 2);
 
-        if (pigtail == 1.0 && numberOfWires >= 2) { wireLength = wireLength * 1.2; }
+        if (pigtail == 1.0 && numberOfWires >= 2) {
+            wireLength = wireLength * 1.2;
+        }
 
         double clpWireLength = Math.round(wireDiam * pi * (wireLength / windingDiam) *
                 (numberOfWires / 10 * 6 + 0.4));
 
         double clpArea = pi * (Math.pow((windingDiam / 2), 2));
-        double clpResist =(windingType * clpWireLength / clpArea / 100);
+        double clpResist = (windingType * clpWireLength / clpArea / 100);
 
-        double coilResist = (typeWire * (wireLength+(numberOfWires*wireDiam)) / rdArea / 1000) /
+        double coilResist = (typeWire * (wireLength + (numberOfWires * wireDiam)) / rdArea / 1000) /
                 (numberOfSpirals * numberOfWires);
-   //     if (werst == 1) { var r_resist = r_resist * ohm_correct; }
+        //     if (werst == 1) { var r_resist = r_resist * ohm_correct; }
 
-        if (spiralsType == 3) { coilResist = (coilResist * clpResist) / (coilResist + clpResist); }
+        if (spiralsType == 3) {
+            coilResist = (coilResist * clpResist) / (coilResist + clpResist);
+        }
 
-        double coilPower = Math.pow((battery), 2)/coilResist;
-        double coilCurent = battery/coilResist;
-        double widthSpiral = numberOfWires * (wireDiam*spiralsType) * turns;
+        double coilPower = Math.pow((battery), 2) / coilResist;
+        double coilCurent = battery / coilResist;
+        double widthSpiral = numberOfWires * (wireDiam * spiralsType) * turns;
 
-        double surfPower = coilPower / ((pi*2) * ((avDiam/2) *
-                ((wireDiam*2*(numberOfSpirals*numberOfWires*1.8)) * turns)));
+        double surfPower = coilPower / ((pi * 2) * ((avDiam / 2) *
+                ((wireDiam * 2 * (numberOfSpirals * numberOfWires * 1.8)) * turns)));
 
-        double mmRas = (((pi*2) * ((avDiam/2) * ((wireDiam*2*(numberOfSpirals*numberOfWires*1.8))
+        double mmRas = (((pi * 2) * ((avDiam / 2) * ((wireDiam * 2 * (numberOfSpirals * numberOfWires * 1.8))
                 * turns)))) * 0.3;
 
         double koef = (43 - mmRas) / 100;
-        if (koef <= 0.2) { koef = 0.2; }
+        if (koef <= 0.2) {
+            koef = 0.2;
+        }
 
-        double den_kon = koef;
-        double coilOptPower = ((pi*2) * ((avDiam/2) * ((wireDiam*2*(numberOfSpirals*numberOfWires*1.8)) * turns))) * den_kon;
-        double a_resist = (typeWire * (wireLength+(numberOfWires*wireDiam)) / rdArea / 1000) / (numberOfWires);
-     //   if (c10 == 1) { var a_resist = a_resist * ohm_correct; }
+        double denKon = koef;
+        double coilOptPower = ((pi * 2) * ((avDiam / 2) * ((wireDiam * 2 * (numberOfSpirals * numberOfWires * 1.8)) * turns))) * denKon;
+        double a_resist = (typeWire * (wireLength + (numberOfWires * wireDiam)) / rdArea / 1000) / (numberOfWires);
+        //   if (c10 == 1) { var a_resist = a_resist * ohm_correct; }
 
 
-
-        coil.setPower( Util.rounded(coilPower, 2));
+        coil.setPower(Util.rounded(coilPower, 2));
         coil.setRecommendedPower(Util.rounded(coilOptPower, 2));
         coil.setResistance(Util.rounded(coilResist, 2));
         coil.setLengthOfWire(Util.rounded(wireLength, 2));
@@ -206,17 +234,17 @@ public class CoilCalculatorFragment extends Fragment implements View.OnClickList
     }
 
     public static void pigtailCheck(int wires) {
-        if (wires == 1){
+        if (wires == 1) {
             switchPigtail.setChecked(false);
             switchPigtail.setEnabled(false);
-        }else switchPigtail.setEnabled(true);
+        } else switchPigtail.setEnabled(true);
     }
 
 
     public static void windingCheck(int types) {
-        if (types == 3){
+        if (types == 3) {
             windingLayout.setVisibility(View.VISIBLE);
-        }else windingLayout.setVisibility(View.INVISIBLE);
+        } else windingLayout.setVisibility(View.INVISIBLE);
     }
 
 
@@ -244,7 +272,7 @@ public class CoilCalculatorFragment extends Fragment implements View.OnClickList
         String type = (String) mBtnRadio.getText();
 
 
-        switch (((View) view.getParent()).getId()){
+        switch (((View) view.getParent()).getId()) {
             case R.id.tablerow_wires:
                 if (mBtnCurrentWireRadio != null) {
                     mBtnCurrentWireRadio.setChecked(false);
@@ -288,6 +316,8 @@ public class CoilCalculatorFragment extends Fragment implements View.OnClickList
     }
 
     private void init(View view) {
+
+        fabSpeedDial = (FabSpeedDial) view.findViewById(R.id.coil_menu);
         scrollView = (ScrollView) view.findViewById(R.id.scrollView);
         switchPigtail = (Switch) view.findViewById(R.id.pigtailSwitch);
         switchPigtail.setEnabled(false);
@@ -296,7 +326,7 @@ public class CoilCalculatorFragment extends Fragment implements View.OnClickList
         turnsSpinner = initSpinner(view, spinnerTurns, R.id.spinnerTurns, ListOfItems.getTurns());
         legLengthmSpinner = initSpinner(view, spinnerLegs, R.id.spinnerLegs, ListOfItems.getLegsLengths());
         typeWireSpinner = initSpinner(view, spinnerTypeWire, R.id.spinnerTypeWire, ListOfItems.getTypeWires());
-        windingDiamSpinner = initSpinner(view, spinnerWindingDiam, R.id.winding_diam, ListOfItems.getWireDiams() );
+        windingDiamSpinner = initSpinner(view, spinnerWindingDiam, R.id.winding_diam, ListOfItems.getWireDiams());
         windingTypeSpinner = initSpinner(view, spinnerWindingType, R.id.winding_type, ListOfItems.getTypeWires());
         windingLayout = (android.support.v7.widget.CardView) view.findViewById(R.id.winding_layout);
         battery_slider = (Slider) view.findViewById(R.id.slider_battery);
@@ -326,6 +356,44 @@ public class CoilCalculatorFragment extends Fragment implements View.OnClickList
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener((parent, view1, position, id) -> calculateCoil());
         return spinner;
+    }
+
+    private void inputName(final int itemId) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        alertDialog.setTitle(getString(R.string.liquid_name));
+        alertDialog.setMessage(getString(R.string.enter_name));
+
+        alertDialog.setPositiveButton(getResources().getString(R.string.yes),
+                (dialog, which) -> {
+                    coil.setName(inputName.getText().toString());
+                    switch (itemId) {
+                        case R.id.action_share:
+                            Util.share(coil, getActivity());
+                            break;
+                        case R.id.action_save:
+                            try {
+                                HelperFactory.getHelper().getCoilDAO().create(coil);
+                                Toast.makeText(getActivity(), getString(R.string.saved), Toast.LENGTH_SHORT).show();
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+
+                            break;
+                    }
+                });
+
+        alertDialog.setNegativeButton(getResources().getString(R.string.no),
+                (dialog, which) -> {
+                    dialog.cancel();
+                });
+
+        inputName = new EditText(getActivity());
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        inputName.setLayoutParams(lp);
+        alertDialog.setView(inputName);
+        alertDialog.show();
     }
 }
 

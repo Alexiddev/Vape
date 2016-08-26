@@ -17,6 +17,7 @@ import com.google.android.gms.ads.AdView;
 
 import vape.val.liquid.R;
 import vape.val.liquid.ui.coil_calculator.coil_fragments.CoilCalculatorFragment;
+import vape.val.liquid.ui.coil_calculator.coil_fragments.SavedCoilFragment;
 import vape.val.liquid.ui.ohms_law_calculator.OhmsFragment;
 import vape.val.liquid.ui.recipe.main_recipe.CreateRecipeFragment;
 import vape.val.liquid.ui.recipe.main_recipe.SavedFragment;
@@ -74,7 +75,9 @@ public class MainActivity extends ActionBarActivity
         } else if (id == R.id.nav_voltage) {
             fragment = new OhmsFragment();
         } else if (id == R.id.nav_coil) {
-            fragment = new CoilCalculatorFragment();
+            fragment = new CoilCalculatorFragment();}
+        else if (id == R.id.nav_my_coil) {
+            fragment = new SavedCoilFragment();
         } else if (id == R.id.nav_share) {
             Util.shareApp(context);
         }

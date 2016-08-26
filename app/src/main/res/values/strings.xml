@@ -25,7 +25,9 @@
     <string name="banner_result">ca-app-pub-7116840615884768/1773037334</string>
     <string name="share">Share</string>
     <string name="save">Save</string>
+    <string name="saved">Saved</string>
     <string name="liquid_name">Liquid name</string>
+    <string name="coil_name">Coil name</string>
     <string name="enter_name">Enter name</string>
     <string name="enjoying">Enjoying E-Cigarette liquid recipe?</string>
     <string name="rta_dialog_title">Rate this app</string>
@@ -45,6 +47,7 @@
     <string name="my_recipes">My recipes</string>
     <string name="delete">Delete</string>
     <string name="no_recipe">You have\'n saved recipes</string>
+    <string name="no_coils">You have\'n saved coils</string>
     <string name="title_activity_d">d</string>
     <string name="yes">YES</string>
     <string name="no">NO</string>
@@ -81,13 +84,8 @@
     <string name="amp">" Amp"</string>
     <string name="wmm">" W/mm²"</string>
     <string name="coil_calculator">Coil building calculator</string>
-
-
-    <!--http://e-liquid-recipes.com/create-->
-    <!--http://www.danstools.com/javascript-beautify/    -->
-    <!--https://www.misthub.com/blogs/vape-tutorials/76788933-tutorial-ohms-law-and-vape-safety-calculator-->
-
-    <!--http://reprova.com/calc/-->
-    <!--http://reprova.com/calc/js/main.js-->
+    <string name="winding_type">Winding type</string>
+    <string name="winding_diameter">Winding diameter</string>
+    <string name="my_coils">My coils</string>
 
 </resources>

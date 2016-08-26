@@ -9,9 +9,12 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import java.sql.SQLException;
+
 import io.github.yavski.fabspeeddial.FabSpeedDial;
 import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 import vape.val.liquid.R;
+import vape.val.liquid.database.HelperFactory;
 import vape.val.liquid.model.liquid.Liquid;
 import vape.val.liquid.ui.recipe.base.BaseFragment;
 import vape.val.liquid.util.Util;
@@ -63,7 +66,12 @@ public class ResultFragment extends BaseFragment {
                             Util.share(liquid, getActivity());
                             break;
                         case R.id.action_save:
-                            Util.save(liquid, getActivity());
+                            try {
+                                HelperFactory.getHelper().getLiquidDAO().create(liquid);
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+
                             break;
                     }
                 });
