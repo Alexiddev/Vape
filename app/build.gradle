@@ -9,8 +9,8 @@ android {
         applicationId "vape.val.liquid"
         minSdkVersion 15
         targetSdkVersion 24
-        versionCode 11
-        versionName "1.6.3"
+        versionCode 13
+        versionName "1.6.5"
     }
 
     compileOptions {

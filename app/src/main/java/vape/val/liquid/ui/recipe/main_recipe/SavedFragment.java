@@ -3,6 +3,7 @@ package vape.val.liquid.ui.recipe.main_recipe;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,11 @@ public class SavedFragment extends BaseFragment {
     ScrollView scrollView;
     ArrayAdapter<Liquid> liquidAdapter;
     ArrayList<Liquid> liquidList;
+
+    public static SavedFragment newInstance() {
+        SavedFragment savedFragment = new SavedFragment();
+        return savedFragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -125,10 +131,12 @@ public class SavedFragment extends BaseFragment {
 
     private void hideView() {
         RelativeLayout mainLayout = (RelativeLayout) savedFragmentView.findViewById(R.id.main_saved_layout);
-        spinner.setVisibility(View.GONE);
+        CardView spinnerCard = (CardView) savedFragmentView.findViewById(R.id.recipe_card_spinner);
+        CardView headCard = (CardView) savedFragmentView.findViewById(R.id.table_card);
+        spinnerCard.setVisibility(View.GONE);
+        headCard.setVisibility(View.GONE);
         scrollView.setVisibility(View.GONE);
         fabSpeedDial.setVisibility(View.GONE);
-        headLayout.setVisibility(View.GONE);
         Snackbar snackbar = Snackbar
                 .make(mainLayout, R.string.no_recipe, Snackbar.LENGTH_LONG)
                 .setAction(R.string.ok, view -> {

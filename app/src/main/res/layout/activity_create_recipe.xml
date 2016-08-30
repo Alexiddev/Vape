@@ -8,10 +8,8 @@
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    android:paddingBottom="8dp"
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
-    android:paddingTop="8dp"
     android:weightSum="1"
     tools:context=".ui.recipe.main_recipe.CreateRecipeFragment">
 

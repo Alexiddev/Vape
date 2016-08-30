@@ -10,7 +10,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -33,16 +37,19 @@ public class MainActivity extends ActionBarActivity
     FragmentTransaction fragmentTransaction;
     Context context;
 
+    ActionBarDrawerToggle mDrawerToggle;
+    DrawerLayout mDrawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         manager = this.getSupportFragmentManager();
         context = this;
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        mAdView.loadAd(adRequest);
+//        AdView mAdView = (AdView) findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .build();
+//        mAdView.loadAd(adRequest);
 
         RateThisApp.Config config = new RateThisApp.Config(3, 5);
         RateThisApp.init(config);
@@ -51,6 +58,27 @@ public class MainActivity extends ActionBarActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getResources().getString(R.string.create_new_recipe));
+
+        mDrawerToggle = new ActionBarDrawerToggle(this,mDrawer,R.string.app_name,R.string.app_name){
+            @Override
+            public void onDrawerClosed(View drawerView) {
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+            }
+        };
+        mDrawer.addDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
     }
 
     @Override
@@ -68,16 +96,22 @@ public class MainActivity extends ActionBarActivity
     public boolean onNavigationItemSelected(MenuItem item) {
 
         int id = item.getItemId();
+
         if (id == R.id.nav_create_new_recipe) {
-            fragment = new CreateRecipeFragment();
+            fragment = CreateRecipeFragment.newInstance();
+            getSupportActionBar().setTitle(getResources().getString(R.string.create_new_recipe));
         } else if (id == R.id.nav_saved) {
-            fragment = new SavedFragment();
+            fragment = SavedFragment.newInstance();
+            getSupportActionBar().setTitle(getResources().getString(R.string.my_recipes));
         } else if (id == R.id.nav_voltage) {
-            fragment = new OhmsFragment();
+            fragment = OhmsFragment.newInstance();
+            getSupportActionBar().setTitle(getResources().getString(R.string.ohms_law_calculator));
         } else if (id == R.id.nav_coil) {
-            fragment = new CoilCalculatorFragment();}
-        else if (id == R.id.nav_my_coil) {
-            fragment = new SavedCoilFragment();
+            fragment = CoilCalculatorFragment.newInstance();
+            getSupportActionBar().setTitle(getResources().getString(R.string.coil_calculator));
+        }else if (id == R.id.nav_my_coil) {
+            fragment = SavedCoilFragment.newInstance();
+            getSupportActionBar().setTitle(getResources().getString(R.string.my_coils));
         } else if (id == R.id.nav_share) {
             Util.shareApp(context);
         }
@@ -93,4 +127,15 @@ public class MainActivity extends ActionBarActivity
         }
         return true;
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

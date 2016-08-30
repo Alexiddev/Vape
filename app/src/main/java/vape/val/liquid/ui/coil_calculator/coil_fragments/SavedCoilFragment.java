@@ -29,6 +29,7 @@ import vape.val.liquid.database.HelperFactory;
 import vape.val.liquid.model.coil.Coil;
 import vape.val.liquid.model.liquid.Liquid;
 import vape.val.liquid.ui.coil_calculator.base.BaseCoilFragment;
+import vape.val.liquid.ui.ohms_law_calculator.OhmsFragment;
 import vape.val.liquid.util.Util;
 
 public class SavedCoilFragment extends BaseCoilFragment {
@@ -45,6 +46,11 @@ public class SavedCoilFragment extends BaseCoilFragment {
     CardView bottom_card;
 
     Coil coil;
+
+    public static SavedCoilFragment newInstance() {
+        SavedCoilFragment savedCoilFragment = new SavedCoilFragment();
+        return savedCoilFragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

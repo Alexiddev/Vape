@@ -87,6 +87,11 @@ public class CoilCalculatorFragment extends Fragment implements View.OnClickList
     TableRow spiralsTable;
     TableRow typeSpiralsTable;
 
+    public static CoilCalculatorFragment newInstance() {
+        CoilCalculatorFragment coilCalculatorFragment = new CoilCalculatorFragment();
+        return coilCalculatorFragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

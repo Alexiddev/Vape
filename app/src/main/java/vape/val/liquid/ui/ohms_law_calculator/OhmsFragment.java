@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import vape.val.liquid.R;
+import vape.val.liquid.ui.recipe.main_recipe.SavedFragment;
 import vape.val.liquid.util.Util;
 
 
@@ -29,6 +30,11 @@ public class OhmsFragment extends Fragment {
     private float ohms;
     private float amps;
     private float watts;
+
+    public static OhmsFragment newInstance() {
+        OhmsFragment ohmsFragment = new OhmsFragment();
+        return ohmsFragment;
+    }
 
 
     @Override

@@ -16,6 +16,7 @@ import com.rey.material.widget.Slider;
 
 import vape.val.liquid.R;
 import vape.val.liquid.model.liquid.Liquid;
+import vape.val.liquid.ui.coil_calculator.coil_fragments.CoilCalculatorFragment;
 import vape.val.liquid.util.Util;
 
 public class CreateRecipeFragment extends Fragment {
@@ -74,6 +75,11 @@ public class CreateRecipeFragment extends Fragment {
     com.rey.material.widget.Slider slider_add_flavor_2;
     com.rey.material.widget.Slider slider_add_flavor_3;
     View createRecipeFragment;
+
+    public static CreateRecipeFragment newInstance() {
+        CreateRecipeFragment createRecipeFragment = new CreateRecipeFragment();
+        return createRecipeFragment;
+    }
 
 
     @Override
